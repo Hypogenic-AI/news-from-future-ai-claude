@@ -1,0 +1,9 @@
+% Abstract content (no \begin{abstract} needed - handled in main.tex)
+
+Prediction markets aggregate distributed knowledge about future events into probability estimates, yet raw probabilities remain difficult for general audiences to interpret.
+We investigate whether large language models can bridge this gap by generating plausible news articles about future events conditioned on prediction market probabilities.
+We propose \ours, a pipeline that fetches real prediction market data from \polymarket and generates news articles using four prompting strategies: zero-shot, probability-conditioned, scenario-positive, and scenario-negative.
+We evaluate 60 generated articles across 15 diverse events using \llmjudge evaluation and automated linguistic metrics.
+Our experiments reveal that probability-conditioned generation significantly outperforms baselines, achieving an average quality score of 4.53/5 compared to 3.40/5 for zero-shot generation---a 33\% improvement.
+The probability-conditioned approach achieves perfect calibration scores (5.0/5), demonstrating that LLMs can effectively translate numerical probabilities into appropriately confident narrative language.
+These results establish the feasibility of ``News from the Future'' systems that transform prediction market data into accessible, well-calibrated narratives for scenario planning and probabilistic literacy.

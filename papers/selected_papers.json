@@ -1,0 +1,634 @@
+[
+  {
+    "id": "2310.05046v2",
+    "title": "FakeGPT: Fake News Generation, Explanation and Detection of Large Language Models",
+    "authors": [
+      "Yue Huang",
+      "Lichao Sun"
+    ],
+    "year": 2023,
+    "abstract": "The rampant spread of fake news has adversely affected society, resulting in extensive research on curbing its spread. As a notable milestone in large language models (LLMs), ChatGPT has gained significant attention due to its exceptional natural language processing capabilities. In this study, we present a thorough exploration of ChatGPT's proficiency in generating, explaining, and detecting fake news as follows. Generation -- We employ four prompt methods to generate fake news samples and prov...",
+    "pdf_url": "https://arxiv.org/pdf/2310.05046v2",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2503.24206v2",
+    "title": "Synthetic News Generation for Fake News Classification",
+    "authors": [
+      "Abdul Sittar",
+      "Luka Golob",
+      "Mateja Smiljanic"
+    ],
+    "year": 2025,
+    "abstract": "This study explores the generation and evaluation of synthetic fake news through fact based manipulations using large language models (LLMs). We introduce a novel methodology that extracts key facts from real articles, modifies them, and regenerates content to simulate fake news while maintaining coherence. To assess the quality of the generated content, we propose a set of evaluation metrics coherence, dissimilarity, and correctness. The research also investigates the application of synthetic d...",
+    "pdf_url": "https://arxiv.org/pdf/2503.24206v2",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2502.08205v1",
+    "title": "Wisdom of the Crowds in Forecasting: Forecast Summarization for Supporting Future Event Prediction",
+    "authors": [
+      "Anisha Saha",
+      "Adam Jatowt"
+    ],
+    "year": 2025,
+    "abstract": "Future Event Prediction (FEP) is an essential activity whose demand and application range across multiple domains. While traditional methods like simulations, predictive and time-series forecasting have demonstrated promising outcomes, their application in forecasting complex events is not entirely reliable due to the inability of numerical data to accurately capture the semantic information related to events. One forecasting way is to gather and aggregate collective opinions on the future to ma...",
+    "pdf_url": "https://arxiv.org/pdf/2502.08205v1",
+    "categories": [
+      "cs.LG",
+      "cs.CL",
+      "cs.IR"
+    ]
+  },
+  {
+    "id": "2402.07862v2",
+    "title": "AI-Augmented Predictions: LLM Assistants Improve Human Forecasting Accuracy",
+    "authors": [
+      "Philipp Schoenegger",
+      "Peter S. Park",
+      "Ezra Karger"
+    ],
+    "year": 2024,
+    "abstract": "Large language models (LLMs) match and sometimes exceeding human performance in many domains. This study explores the potential of LLMs to augment human judgement in a forecasting task. We evaluate the effect on human forecasters of two LLM assistants: one designed to provide high-quality (\"superforecasting\") advice, and the other designed to be overconfident and base-rate neglecting, thus providing noisy forecasting advice. We compare participants using these assistants to a control group that ...",
+    "pdf_url": "https://arxiv.org/pdf/2402.07862v2",
+    "categories": [
+      "cs.CY",
+      "cs.AI",
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2406.15126v1",
+    "title": "On LLMs-Driven Synthetic Data Generation, Curation, and Evaluation: A Survey",
+    "authors": [
+      "Lin Long",
+      "Rui Wang",
+      "Ruixuan Xiao"
+    ],
+    "year": 2024,
+    "abstract": "Within the evolving landscape of deep learning, the dilemma of data quantity and quality has been a long-standing problem. The recent advent of Large Language Models (LLMs) offers a data-centric solution to alleviate the limitations of real-world data with synthetic data generation. However, current investigations into this field lack a unified framework and mostly stay on the surface. Therefore, this paper provides an organization of relevant studies based on a generic workflow of synthetic dat...",
+    "pdf_url": "https://arxiv.org/pdf/2406.15126v1",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2503.11495v1",
+    "title": "V-STaR: Benchmarking Video-LLMs on Video Spatio-Temporal Reasoning",
+    "authors": [
+      "Zixu Cheng",
+      "Jian Hu",
+      "Ziquan Liu"
+    ],
+    "year": 2025,
+    "abstract": "Human processes video reasoning in a sequential spatio-temporal reasoning logic, we first identify the relevant frames (\"when\") and then analyse the spatial relationships (\"where\") between key objects, and finally leverage these relationships to draw inferences (\"what\"). However, can Video Large Language Models (Video-LLMs) also \"reason through a sequential spatio-temporal logic\" in videos? Existing Video-LLM benchmarks primarily focus on assessing object presence, neglecting relational reasonin...",
+    "pdf_url": "https://arxiv.org/pdf/2503.11495v1",
+    "categories": [
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "2601.19834v1",
+    "title": "Visual Generation Unlocks Human-Like Reasoning through Multimodal World Models",
+    "authors": [
+      "Jialong Wu",
+      "Xiaoying Zhang",
+      "Hongyi Yuan"
+    ],
+    "year": 2026,
+    "abstract": "Humans construct internal world models and reason by manipulating the concepts within these models. Recent advances in AI, particularly chain-of-thought (CoT) reasoning, approximate such human cognitive abilities, where world models are believed to be embedded within large language models. Expert-level performance in formal and abstract domains such as mathematics and programming has been achieved in current systems by relying predominantly on verbal reasoning. However, they still lag far behind...",
+    "pdf_url": "https://arxiv.org/pdf/2601.19834v1",
+    "categories": [
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2408.06578v2",
+    "title": "OpenEP: Open-Ended Future Event Prediction",
+    "authors": [
+      "Yong Guan",
+      "Hao Peng",
+      "Xiaozhi Wang"
+    ],
+    "year": 2024,
+    "abstract": "Future event prediction (FEP) is a long-standing and crucial task in the world, as understanding the evolution of events enables early risk identification, informed decision-making, and strategic planning. Existing work typically treats event prediction as classification tasks and confines the outcomes of future events to a fixed scope, such as yes/no questions, candidate set, and taxonomy, which is difficult to include all possible outcomes of future events. In this paper, we introduce OpenEP (...",
+    "pdf_url": "https://arxiv.org/pdf/2408.06578v2",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2510.06386v1",
+    "title": "Controllable Stylistic Text Generation with Train-Time Attribute-Regularized Diffusion",
+    "authors": [
+      "Fan Zhou",
+      "Chang Tian",
+      "Tim Van de Cruys"
+    ],
+    "year": 2025,
+    "abstract": "Generating stylistic text with specific attributes is a key problem in controllable text generation. Recently, diffusion models have emerged as a powerful paradigm for both visual and textual generation. Existing approaches can be broadly categorized into classifier-free guidance (CFG) and classifier guidance (CG) methods. While CFG effectively preserves semantic content, it often fails to provide effective attribute control. In contrast, CG modifies the denoising trajectory using classifier gra...",
+    "pdf_url": "https://arxiv.org/pdf/2510.06386v1",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2210.04186v2",
+    "title": "Analogy Generation by Prompting Large Language Models: A Case Study of InstructGPT",
+    "authors": [
+      "Bhavya Bhavya",
+      "Jinjun Xiong",
+      "Chengxiang Zhai"
+    ],
+    "year": 2022,
+    "abstract": "We propose a novel application of prompting Pre-trained Language Models (PLMs) to generate analogies and study how to design effective prompts for two task settings: generating a source concept analogous to a given target concept (aka Analogous Concept Generation or ACG), and generating an explanation of the similarity between a given pair of target concept and source concept (aka Analogous Explanation Generation or AEG). We found that it is feasible to prompt InstructGPT to generate meaningful ...",
+    "pdf_url": "https://arxiv.org/pdf/2210.04186v2",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2410.05339v2",
+    "title": "Proceedings of the First International Workshop on Next-Generation Language Models for Knowledge Representation and Reasoning (NeLaMKRR 2024)",
+    "authors": [
+      "Ken Satoh",
+      "Ha-Thanh Nguyen",
+      "Francesca Toni"
+    ],
+    "year": 2024,
+    "abstract": "Reasoning is an essential component of human intelligence as it plays a fundamental role in our ability to think critically, support responsible decisions, and solve challenging problems. Traditionally, AI has addressed reasoning in the context of logic-based representations of knowledge. However, the recent leap forward in natural language processing, with the emergence of language models based on transformers, is hinting at the possibility that these models exhibit reasoning abilities, particu...",
+    "pdf_url": "https://arxiv.org/pdf/2410.05339v2",
+    "categories": [
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2511.09575v2",
+    "title": "Proceedings of the Second International Workshop on Next-Generation Language Models for Knowledge Representation and Reasoning (NeLaMKRR 2025)",
+    "authors": [
+      "Ha-Thanh Nguyen",
+      "Ken Satoh",
+      "Francesca Toni"
+    ],
+    "year": 2025,
+    "abstract": "Reasoning is an essential component of human intelligence in that it plays a fundamental role in our ability to think critically, support responsible decisions, and solve challenging problems. Traditionally, AI has addressed reasoning in the context of logic-based representations of knowledge. However, the recent leap forward in natural language processing, with the emergence of language models based on transformers, is hinting at the possibility that these models exhibit reasoning abilities, pa...",
+    "pdf_url": "https://arxiv.org/pdf/2511.09575v2",
+    "categories": [
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2310.14892v3",
+    "title": "Air-Decoding: Attribute Distribution Reconstruction for Decoding-Time Controllable Text Generation",
+    "authors": [
+      "Tianqi Zhong",
+      "Quan Wang",
+      "Jingxuan Han"
+    ],
+    "year": 2023,
+    "abstract": "Controllable text generation (CTG) aims to generate text with desired attributes, and decoding-time-based methods have shown promising performance on this task. However, in this paper, we identify the phenomenon of Attribute Collapse for the first time. It causes the fluency of generated text to rapidly decrease when the control strength exceeds a critical value, rendering the text completely unusable. This limitation hinders the effectiveness of decoding methods in achieving high levels of cont...",
+    "pdf_url": "https://arxiv.org/pdf/2310.14892v3",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2310.00034v2",
+    "title": "PB-LLM: Partially Binarized Large Language Models",
+    "authors": [
+      "Yuzhang Shang",
+      "Zhihang Yuan",
+      "Qiang Wu"
+    ],
+    "year": 2023,
+    "abstract": "This paper explores network binarization, a radical form of quantization, compressing model weights to a single bit, specifically for Large Language Models (LLMs) compression. Due to previous binarization methods collapsing LLMs, we propose a novel approach, Partially-Binarized LLM (PB-LLM), which can achieve extreme low-bit quantization while maintaining the linguistic reasoning capacity of quantized LLMs. Specifically, our exploration first uncovers the ineffectiveness of naive applications of...",
+    "pdf_url": "https://arxiv.org/pdf/2310.00034v2",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2412.15453v1",
+    "title": "Northeastern Uni at Multilingual Counterspeech Generation: Enhancing Counter Speech Generation with LLM Alignment through Direct Preference Optimization",
+    "authors": [
+      "Sahil Wadhwa",
+      "Chengtian Xu",
+      "Haoming Chen"
+    ],
+    "year": 2024,
+    "abstract": "The automatic generation of counter-speech (CS) is a critical strategy for addressing hate speech by providing constructive and informed responses. However, existing methods often fail to generate high-quality, impactful, and scalable CS, particularly across diverse linguistic contexts. In this paper, we propose a novel methodology to enhance CS generation by aligning Large Language Models (LLMs) using Supervised Fine-Tuning (SFT) and Direct Preference Optimization (DPO). Our approach leverages ...",
+    "pdf_url": "https://arxiv.org/pdf/2412.15453v1",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2512.13930v1",
+    "title": "Hierarchical Multi-agent Large Language Model Reasoning for Autonomous Functional Materials Discovery",
+    "authors": [
+      "Samuel Rothfarb",
+      "Megan C. Davis",
+      "Ivana Matanovic"
+    ],
+    "year": 2025,
+    "abstract": "Artificial intelligence is reshaping scientific exploration, but most methods automate procedural tasks without engaging in scientific reasoning, limiting autonomy in discovery. We introduce Materials Agents for Simulation and Theory in Electronic-structure Reasoning (MASTER), an active learning framework where large language models autonomously design, execute, and interpret atomistic simulations. In MASTER, a multimodal system translates natural language into density functional theory workflow...",
+    "pdf_url": "https://arxiv.org/pdf/2512.13930v1",
+    "categories": [
+      "cond-mat.mtrl-sci",
+      "cs.AI",
+      "cs.CL",
+      "cs.LG",
+      "cs.MA"
+    ]
+  },
+  {
+    "id": "2210.16557v1",
+    "title": "Towards Attribute-Entangled Controllable Text Generation: A Pilot Study of Blessing Generation",
+    "authors": [
+      "Shulin Huang",
+      "Shirong Ma",
+      "Yinghui Li"
+    ],
+    "year": 2022,
+    "abstract": "Controllable Text Generation (CTG) has obtained great success due to its fine-grained generation ability obtained by focusing on multiple attributes. However, most existing CTG researches overlook how to utilize the attribute entanglement to enhance the diversity of the controlled generated texts. Facing this dilemma, we focus on a novel CTG scenario, i.e., blessing generation which is challenging because high-quality blessing texts require CTG models to comprehensively consider the entanglement...",
+    "pdf_url": "https://arxiv.org/pdf/2210.16557v1",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2404.17586v1",
+    "title": "The Future of Scientific Publishing: Automated Article Generation",
+    "authors": [
+      "Jeremy R. Harper"
+    ],
+    "year": 2024,
+    "abstract": "This study introduces a novel software tool leveraging large language model (LLM) prompts, designed to automate the generation of academic articles from Python code a significant advancement in the fields of biomedical informatics and computer science. Selected for its widespread adoption and analytical versatility, Python served as a foundational proof of concept; however, the underlying methodology and framework exhibit adaptability across various GitHub repo's underlining the tool's broad app...",
+    "pdf_url": "https://arxiv.org/pdf/2404.17586v1",
+    "categories": [
+      "cs.HC",
+      "cs.AI",
+      "cs.ET"
+    ]
+  },
+  {
+    "id": "2510.00071v2",
+    "title": "ARS: Adaptive Reasoning Suppression for Efficient Large Reasoning Language Models",
+    "authors": [
+      "Dongqi Zheng"
+    ],
+    "year": 2025,
+    "abstract": "Large Reasoning Language Models (LRLMs or LRMs) demonstrate remarkable capabilities in complex reasoning tasks, but suffer from significant computational inefficiencies due to overthinking phenomena. Existing efficient reasoning methods face the challenge of balancing reasoning quality with inference cost reduction. We propose \\textbf{Adaptive Reasoning Suppression (ARS)}, a novel training-free approach that dynamically suppresses redundant reasoning steps while preserving accuracy through adapt...",
+    "pdf_url": "https://arxiv.org/pdf/2510.00071v2",
+    "categories": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2508.04848v1",
+    "title": "Large Language Models Reasoning Abilities Under Non-Ideal Conditions After RL-Fine-Tuning",
+    "authors": [
+      "Chang Tian",
+      "Matthew B. Blaschko",
+      "Mingzhe Xing"
+    ],
+    "year": 2025,
+    "abstract": "Reinforcement learning (RL) has become a key technique for enhancing the reasoning abilities of large language models (LLMs), with policy-gradient algorithms dominating the post-training stage because of their efficiency and effectiveness. However, most existing benchmarks evaluate large-language-model reasoning under idealized settings, overlooking performance in realistic, non-ideal scenarios. We identify three representative non-ideal scenarios with practical relevance: summary inference, fin...",
+    "pdf_url": "https://arxiv.org/pdf/2508.04848v1",
+    "categories": [
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2504.15466v2",
+    "title": "Learning Adaptive Parallel Reasoning with Language Models",
+    "authors": [
+      "Jiayi Pan",
+      "Xiuyu Li",
+      "Long Lian"
+    ],
+    "year": 2025,
+    "abstract": "Scaling inference-time computation has substantially improved the reasoning capabilities of language models. However, existing methods have significant limitations: serialized chain-of-thought approaches generate overly long outputs, leading to increased latency and exhausted context windows, while parallel methods such as self-consistency suffer from insufficient coordination, resulting in redundant computations and limited performance gains. To address these shortcomings, we propose Adaptive P...",
+    "pdf_url": "https://arxiv.org/pdf/2504.15466v2",
+    "categories": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2308.16118v2",
+    "title": "Response: Emergent analogical reasoning in large language models",
+    "authors": [
+      "Damian Hodel",
+      "Jevin West"
+    ],
+    "year": 2023,
+    "abstract": "In their recent Nature Human Behaviour paper, \"Emergent analogical reasoning in large language models,\" (Webb, Holyoak, and Lu, 2023) the authors argue that \"large language models such as GPT-3 have acquired an emergent ability to find zero-shot solutions to a broad range of analogy problems.\" In this response, we provide counterexamples of the letter string analogies. In our tests, GPT-3 fails to solve simplest variations of the original tasks, whereas human performance remains consistently hig...",
+    "pdf_url": "https://arxiv.org/pdf/2308.16118v2",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2406.01698v3",
+    "title": "Demystifying AI Platform Design for Distributed Inference of Next-Generation LLM models",
+    "authors": [
+      "Abhimanyu Bambhaniya",
+      "Ritik Raj",
+      "Geonhwa Jeong"
+    ],
+    "year": 2024,
+    "abstract": "Large language models (LLMs) have shown remarkable performance across a wide range of applications, often outperforming human experts. However, deploying these gigantic models efficiently for diverse inference use cases requires carefully designed hardware platforms with ample computing, memory, and network resources. With constant innovation in LLM serving optimizations and model architecture evolving at breakneck speed, the hardware requirements to meet Service Level Objectives (SLOs) remain a...",
+    "pdf_url": "https://arxiv.org/pdf/2406.01698v3",
+    "categories": [
+      "cs.AR",
+      "cs.AI",
+      "cs.DC",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2101.02359v1",
+    "title": "Exploring Text-transformers in AAAI 2021 Shared Task: COVID-19 Fake News Detection in English",
+    "authors": [
+      "Xiangyang Li",
+      "Yu Xia",
+      "Xiang Long"
+    ],
+    "year": 2021,
+    "abstract": "In this paper, we describe our system for the AAAI 2021 shared task of COVID-19 Fake News Detection in English, where we achieved the 3rd position with the weighted F1 score of 0.9859 on the test set. Specifically, we proposed an ensemble method of different pre-trained language models such as BERT, Roberta, Ernie, etc. with various training strategies including warm-up,learning rate schedule and k-fold cross-validation. We also conduct an extensive analysis of the samples that are not correctly...",
+    "pdf_url": "https://arxiv.org/pdf/2101.02359v1",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2510.07092v1",
+    "title": "Generative World Modelling for Humanoids: 1X World Model Challenge Technical Report",
+    "authors": [
+      "Riccardo Mereu",
+      "Aidan Scannell",
+      "Yuxin Hou"
+    ],
+    "year": 2025,
+    "abstract": "World models are a powerful paradigm in AI and robotics, enabling agents to reason about the future by predicting visual observations or compact latent states. The 1X World Model Challenge introduces an open-source benchmark of real-world humanoid interaction, with two complementary tracks: sampling, focused on forecasting future image frames, and compression, focused on predicting future discrete latent codes. For the sampling track, we adapt the video generation foundation model Wan-2.2 TI2V-5...",
+    "pdf_url": "https://arxiv.org/pdf/2510.07092v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.RO"
+    ]
+  },
+  {
+    "id": "2405.19266v4",
+    "title": "PediatricsGPT: Large Language Models as Chinese Medical Assistants for Pediatric Applications",
+    "authors": [
+      "Dingkang Yang",
+      "Jinjie Wei",
+      "Dongling Xiao"
+    ],
+    "year": 2024,
+    "abstract": "Developing intelligent pediatric consultation systems offers promising prospects for improving diagnostic efficiency, especially in China, where healthcare resources are scarce. Despite recent advances in Large Language Models (LLMs) for Chinese medicine, their performance is sub-optimal in pediatric applications due to inadequate instruction data and vulnerable training procedures. To address the above issues, this paper builds PedCorpus, a high-quality dataset of over 300,000 multi-task instru...",
+    "pdf_url": "https://arxiv.org/pdf/2405.19266v4",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2402.01393v3",
+    "title": "ALERT-Transformer: Bridging Asynchronous and Synchronous Machine Learning for Real-Time Event-based Spatio-Temporal Data",
+    "authors": [
+      "Carmen Martin-Turrero",
+      "Maxence Bouvier",
+      "Manuel Breitenstein"
+    ],
+    "year": 2024,
+    "abstract": "We seek to enable classic processing of continuous ultra-sparse spatiotemporal data generated by event-based sensors with dense machine learning models. We propose a novel hybrid pipeline composed of asynchronous sensing and synchronous processing that combines several ideas: (1) an embedding based on PointNet models -- the ALERT module -- that can continuously integrate new and dismiss old events thanks to a leakage mechanism, (2) a flexible readout of the embedded data that allows to feed any ...",
+    "pdf_url": "https://arxiv.org/pdf/2402.01393v3",
+    "categories": [
+      "cs.CV",
+      "cs.LG",
+      "cs.NE"
+    ]
+  },
+  {
+    "id": "2310.14724v3",
+    "title": "A Survey on LLM-Generated Text Detection: Necessity, Methods, and Future Directions",
+    "authors": [
+      "Junchao Wu",
+      "Shu Yang",
+      "Runzhe Zhan"
+    ],
+    "year": 2023,
+    "abstract": "The powerful ability to understand, follow, and generate complex language emerging from large language models (LLMs) makes LLM-generated text flood many areas of our daily lives at an incredible speed and is widely accepted by humans. As LLMs continue to expand, there is an imperative need to develop detectors that can detect LLM-generated text. This is crucial to mitigate potential misuse of LLMs and safeguard realms like artistic expression and social networks from harmful influence of LLM-gen...",
+    "pdf_url": "https://arxiv.org/pdf/2310.14724v3",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2106.07704v4",
+    "title": "Efficient (Soft) Q-Learning for Text Generation with Limited Good Data",
+    "authors": [
+      "Han Guo",
+      "Bowen Tan",
+      "Zhengzhong Liu"
+    ],
+    "year": 2021,
+    "abstract": "Maximum likelihood estimation (MLE) is the predominant algorithm for training text generation models. This paradigm relies on direct supervision examples, which is not applicable to many emerging applications, such as generating adversarial attacks or generating prompts to control language models. Reinforcement learning (RL) on the other hand offers a more flexible solution by allowing users to plug in arbitrary task metrics as reward. Yet previous RL algorithms for text generation, such as poli...",
+    "pdf_url": "https://arxiv.org/pdf/2106.07704v4",
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2305.12001v2",
+    "title": "OPT-R: Exploring the Role of Explanations in Finetuning and Prompting for Reasoning Skills of Large Language Models",
+    "authors": [
+      "Badr AlKhamissi",
+      "Siddharth Verma",
+      "Ping Yu"
+    ],
+    "year": 2023,
+    "abstract": "In this paper, we conduct a thorough investigation into the reasoning capabilities of Large Language Models (LLMs), focusing specifically on the Open Pretrained Transformers (OPT) models as a representative of such models. Our study entails finetuning three different sizes of OPT on a carefully curated reasoning corpus, resulting in two sets of finetuned models: OPT-R, finetuned without explanations, and OPT-RE, finetuned with explanations. We then evaluate all models on 57 out-of-domain tasks d...",
+    "pdf_url": "https://arxiv.org/pdf/2305.12001v2",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2305.04147v1",
+    "title": "Controllable Mixed-Initiative Dialogue Generation through Prompting",
+    "authors": [
+      "Maximillian Chen",
+      "Xiao Yu",
+      "Weiyan Shi"
+    ],
+    "year": 2023,
+    "abstract": "Mixed-initiative dialogue tasks involve repeated exchanges of information and conversational control. Conversational agents gain control by generating responses that follow particular dialogue intents or strategies, prescribed by a policy planner. The standard approach has been fine-tuning pre-trained language models to perform generation conditioned on these intents. However, these supervised generation models are limited by the cost and quality of data annotation. We instead prompt large langu...",
+    "pdf_url": "https://arxiv.org/pdf/2305.04147v1",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.HC"
+    ]
+  },
+  {
+    "id": "2409.19839v5",
+    "title": "ForecastBench: A Dynamic Benchmark of AI Forecasting Capabilities",
+    "authors": [
+      "Ezra Karger",
+      "Houtan Bastani",
+      "Chen Yueh-Han"
+    ],
+    "year": 2024,
+    "abstract": "Forecasts of future events are essential inputs into informed decision-making. Machine learning (ML) systems have the potential to deliver forecasts at scale, but there is no framework for evaluating the accuracy of ML systems on a standardized set of forecasting questions. To address this gap, we introduce ForecastBench: a dynamic benchmark that evaluates the accuracy of ML systems on an automatically generated and regularly updated set of 1,000 forecasting questions. To avoid any possibility o...",
+    "pdf_url": "https://arxiv.org/pdf/2409.19839v5",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2506.22486v1",
+    "title": "Hallucination Detection with Small Language Models",
+    "authors": [
+      "Ming Cheung"
+    ],
+    "year": 2025,
+    "abstract": "Since the introduction of ChatGPT, large language models (LLMs) have demonstrated significant utility in various tasks, such as answering questions through retrieval-augmented generation. Context can be retrieved using a vectorized database, serving as a foundation for LLMs to generate responses. However, hallucinations in responses can undermine the reliability of LLMs in practical applications, and they are not easily detectable in the absence of ground truth, particularly in question-and-answ...",
+    "pdf_url": "https://arxiv.org/pdf/2506.22486v1",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2511.12599v1",
+    "title": "FINRS: A Risk-Sensitive Trading Framework for Real Financial Markets",
+    "authors": [
+      "Bijia Liu",
+      "Ronghao Dang"
+    ],
+    "year": 2025,
+    "abstract": "Large language models (LLMs) have shown strong reasoning capabilities and are increasingly explored for financial trading. Existing LLM-based trading agents, however, largely focus on single-step prediction and lack integrated mechanisms for risk management, which reduces their effectiveness in volatile markets. We introduce FinRS, a risk-sensitive trading framework that combines hierarchical market analysis, dual-decision agents, and multi-timescale reward reflection to align trading actions wi...",
+    "pdf_url": "https://arxiv.org/pdf/2511.12599v1",
+    "categories": [
+      "cs.MA"
+    ]
+  },
+  {
+    "id": "2405.09004v3",
+    "title": "Improving Sequential Market Coordination via Value-oriented Renewable Energy Forecasting",
+    "authors": [
+      "Yufan Zhang",
+      "Honglin Wen",
+      "Yuexin Bian"
+    ],
+    "year": 2024,
+    "abstract": "Large penetration of renewable energy sources (RESs) brings huge uncertainty into the electricity markets. The current deterministic clearing approach in the day-ahead (DA) market, where RESs participate based on expected production, has been criticized for causing a lack of coordination between the DA and real-time (RT) markets, leading to high overall operating costs. Previous works indicate that improving day-ahead RES entering quantities can significantly mitigate the drawbacks of determinis...",
+    "pdf_url": "https://arxiv.org/pdf/2405.09004v3",
+    "categories": [
+      "eess.SY",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "1906.11126v2",
+    "title": "On the Coherence of Fake News Articles",
+    "authors": [
+      "Iknoor Singh",
+      "Deepak P",
+      "Anoop K"
+    ],
+    "year": 2019,
+    "abstract": "The generation and spread of fake news within new and online media sources is emerging as a phenomenon of high societal significance. Combating them using data-driven analytics has been attracting much recent scholarly interest. In this study, we analyze the textual coherence of fake news articles vis-a-vis legitimate ones. We develop three computational formulations of textual coherence drawing upon the state-of-the-art methods in natural language processing and data science. Two real-world dat...",
+    "pdf_url": "https://arxiv.org/pdf/1906.11126v2",
+    "categories": [
+      "cs.SI",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "1905.04749v2",
+    "title": "A Benchmark Study of Machine Learning Models for Online Fake News Detection",
+    "authors": [
+      "Junaed Younus Khan",
+      "Md. Tawkat Islam Khondaker",
+      "Sadia Afroz"
+    ],
+    "year": 2019,
+    "abstract": "The proliferation of fake news and its propagation on social media has become a major concern due to its ability to create devastating impacts. Different machine learning approaches have been suggested to detect fake news. However, most of those focused on a specific type of news (such as political) which leads us to the question of dataset-bias of the models used. In this research, we conducted a benchmark study to assess the performance of different applicable machine learning approaches on th...",
+    "pdf_url": "https://arxiv.org/pdf/1905.04749v2",
+    "categories": [
+      "cs.CL",
+      "cs.IR",
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  {
+    "id": "2309.02144v1",
+    "title": "Making Large Language Models Better Reasoners with Alignment",
+    "authors": [
+      "Peiyi Wang",
+      "Lei Li",
+      "Liang Chen"
+    ],
+    "year": 2023,
+    "abstract": "Reasoning is a cognitive process of using evidence to reach a sound conclusion. The reasoning capability is essential for large language models (LLMs) to serve as the brain of the artificial general intelligence agent. Recent studies reveal that fine-tuning LLMs on data with the chain of thought (COT) reasoning process can significantly enhance their reasoning capabilities. However, we find that the fine-tuned LLMs suffer from an \\textit{Assessment Misalignment} problem, i.e., they frequently as...",
+    "pdf_url": "https://arxiv.org/pdf/2309.02144v1",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2512.08480v1",
+    "title": "Soft Inductive Bias Approach via Explicit Reasoning Perspectives in Inappropriate Utterance Detection Using Large Language Models",
+    "authors": [
+      "Ju-Young Kim",
+      "Ji-Hong Park",
+      "Se-Yeon Lee"
+    ],
+    "year": 2025,
+    "abstract": "Recent incidents in certain online games and communities, where anonymity is guaranteed, show that unchecked inappropriate remarks frequently escalate into verbal abuse and even criminal behavior, raising significant social concerns. Consequently, there is a growing need for research on techniques that can detect inappropriate utterances within conversational texts to help build a safer communication environment. Although large-scale language models trained on Korean corpora and chain-of-thought...",
+    "pdf_url": "https://arxiv.org/pdf/2512.08480v1",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2507.16869v3",
+    "title": "Controllable Video Generation: A Survey",
+    "authors": [
+      "Yue Ma",
+      "Kunyu Feng",
+      "Zhongyuan Hu"
+    ],
+    "year": 2025,
+    "abstract": "With the rapid development of AI-generated content (AIGC), video generation has emerged as one of its most dynamic and impactful subfields. In particular, the advancement of video generation foundation models has led to growing demand for controllable video generation methods that can more accurately reflect user intent. Most existing foundation models are designed for text-to-video generation, where text prompts alone are often insufficient to express complex, multi-modal, and fine-grained user...",
+    "pdf_url": "https://arxiv.org/pdf/2507.16869v3",
+    "categories": [
+      "cs.GR",
+      "cs.CV"
+    ]
+  }
+]

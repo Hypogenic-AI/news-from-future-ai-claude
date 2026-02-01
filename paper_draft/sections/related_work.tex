@@ -1,0 +1,38 @@
+\section{Related Work}
+\label{sec:related_work}
+
+Our work lies at the intersection of LLM forecasting, controllable text generation, and synthetic news generation.
+We review each area and position our contribution.
+
+\para{LLM Forecasting.}
+Recent work has evaluated LLMs as forecasters.
+\citet{karger2024forecastbench} introduce ForecastBench, a dynamic benchmark comparing LLM predictions against human superforecasters on 1,000+ questions from prediction markets including \polymarket and Metaculus.
+They find that the best LLM configurations achieve Brier scores of 0.122--0.136, approaching but not matching expert human performance (Brier score 0.096).
+\citet{schoenegger2024ai} demonstrate that LLM assistants can improve human forecasting accuracy by 24--41\%, suggesting value in human-AI collaboration for prediction tasks.
+\citet{guan2024openep} propose OpenEP, a framework for open-ended future event prediction, finding that accurately predicting future events in free-form text remains challenging.
+Unlike these works, which focus on \textit{making} predictions, we focus on \textit{communicating} predictions through narrative text conditioned on probability estimates.
+
+\para{Synthetic News Generation.}
+LLMs can generate highly realistic news content.
+\citet{huang2023fakegpt} conduct a comprehensive study of ChatGPT for fake news generation, finding that humans achieve only 54.8\% accuracy in identifying LLM-generated fake news.
+They identify nine features characterizing fake news, including emotional bias, lack of evidence, and oversimplification.
+Work on synthetic news generation has primarily focused on misinformation detection~\citep{long2024synthetic} and training fake news classifiers.
+Our work differs in that we aim to generate \textit{plausible future news} conditioned on probability estimates, not to create misinformation about past or present events.
+We also emphasize calibration---ensuring that narrative confidence matches the underlying probability.
+
+\para{Controllable Text Generation.}
+Controlling attributes of generated text has been extensively studied.
+\citet{wang2023air} propose Air-Decoding for decoding-time controllable generation, enabling control over attributes like topic and tone.
+Train-time approaches use attribute regularization to guide generation toward desired properties~\citep{controllable2025}.
+We apply the principle of controllability to a novel setting: conditioning news narratives on probability values to produce appropriately confident or hedged language.
+
+\para{Prediction Markets.}
+Prediction markets aggregate information through trading mechanisms, producing probability estimates that often match or exceed expert forecasts~\citep{arrow2008promise,wolfers2004prediction}.
+Markets like Polymarket and Metaculus cover diverse topics including politics, economics, and technology.
+While prediction markets excel at probability estimation, their outputs remain difficult for general audiences to interpret~\citep{spiegelhalter2017risk}.
+Our work addresses this gap by transforming market probabilities into accessible narrative form.
+
+\para{Positioning Our Work.}
+Unlike prior work on LLM forecasting, we focus on communication rather than prediction.
+Unlike synthetic news generation for misinformation detection, we generate plausible future scenarios with explicit attention to probability calibration.
+To our knowledge, we are the first to combine prediction market data with LLM generation to produce probability-conditioned future news.

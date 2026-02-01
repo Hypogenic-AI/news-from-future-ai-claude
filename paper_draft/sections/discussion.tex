@@ -1,0 +1,86 @@
+\section{Discussion}
+\label{sec:discussion}
+
+We discuss the implications of our findings, analyze limitations, and consider broader impacts.
+
+\subsection{Interpretation of Results}
+\label{sec:interpretation}
+
+\para{Probability Conditioning is Effective.}
+Our central finding is that explicit probability conditioning substantially improves the quality and calibration of generated future news.
+The 33\% improvement in overall quality and perfect calibration scores demonstrate that LLMs can effectively translate numerical probability estimates into appropriate narrative confidence.
+This suggests a practical approach for building systems that communicate probabilistic forecasts through natural language.
+
+\para{Calibration is Learnable Without Fine-Tuning.}
+We achieve strong calibration using only prompting, without fine-tuning or specialized training.
+The positive correlation ($r = 0.21$) between probability and linguistic confidence markers indicates that \gptfour has implicit knowledge about how to vary narrative certainty.
+Explicit probability prompts activate this capability, producing well-calibrated outputs.
+
+\para{Authenticity is a Solved Capability.}
+The consistently high authenticity scores (4.0--4.4) across all conditions suggest that generating news-style text is a baseline LLM capability.
+This aligns with prior work showing LLMs can produce highly realistic news content~\citep{huang2023fakegpt}.
+The challenge is not generating authentic-sounding text, but ensuring that text appropriately reflects underlying uncertainty.
+
+\para{Scenario Asymmetry Reflects Data Distribution.}
+The superior performance of \scenarioneg over \scenariopos reflects our data: most events have low probability, making ``did not occur'' narratives more natural.
+For balanced probability distributions, we would expect more symmetric performance.
+This finding suggests that generation strategies should be matched to event probability.
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+\para{Single Model Evaluation.}
+We evaluate only \gptfour for both generation and evaluation.
+Different models may show different calibration characteristics, and using the same model family for generation and evaluation could introduce bias.
+Future work should evaluate across model families.
+
+\para{LLM-as-Judge Concerns.}
+While \llmjudge enables scalable evaluation, it may not capture all aspects of human perception.
+LLM judges may share systematic biases with LLM generators, potentially inflating scores.
+Human evaluation would provide complementary validation.
+
+\para{Limited Probability Range.}
+Our event distribution skews toward low probabilities (0--20\%), with fewer events in the medium range (20--60\%).
+Calibration performance in the medium-probability regime, where hedging decisions are most nuanced, remains less well-characterized.
+
+\para{English Only.}
+All generation and evaluation uses English.
+Calibration through linguistic hedging may vary across languages with different grammatical structures for expressing uncertainty.
+
+\para{Temporal Validity.}
+Generated articles describe future events as if already resolved.
+For events with specific dates, articles may become anachronistic once the resolution date passes.
+Production systems would need mechanisms to handle temporal consistency.
+
+\subsection{Broader Impacts}
+\label{sec:impacts}
+
+\para{Positive Applications.}
+Probability-conditioned news generation could support scenario planning in organizations, help educators teach probabilistic reasoning, and make prediction market information more accessible.
+Well-calibrated narratives may improve decision-making by helping people viscerally understand different future possibilities.
+
+\para{Misuse Concerns.}
+The same capability that makes future news plausible also raises concerns about potential misuse.
+Generated content could be mistaken for real news or deliberately used to spread misinformation.
+Mitigation strategies include clear synthetic content labeling, watermarking, and detection systems.
+
+\para{Ethical Considerations.}
+We emphasize that all generated content in this work is clearly labeled as synthetic and experimental.
+Production systems should implement robust labeling and potentially limit generation for sensitive topics.
+The goal is to enhance understanding of probabilistic futures, not to deceive.
+
+\subsection{Future Directions}
+\label{sec:future}
+
+\para{Human Evaluation.}
+Validating our \llmjudge findings with human evaluators would strengthen conclusions about real-world utility.
+Studies could examine whether probability-conditioned articles help people understand forecasts better than raw probabilities.
+
+\para{Multi-Model Comparison.}
+Evaluating Claude, Gemini, and other models would reveal whether calibration is a general capability or specific to \gptfour.
+
+\para{Multi-Scenario Systems.}
+Generating multiple articles for the same event at different probability thresholds could help users understand the full range of possibilities, not just the most likely outcome.
+
+\para{Interactive Applications.}
+Building web interfaces that generate future news in real-time as prediction market probabilities change would demonstrate practical utility and enable user studies.

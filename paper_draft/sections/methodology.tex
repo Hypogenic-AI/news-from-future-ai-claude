@@ -1,0 +1,119 @@
+\section{Methodology}
+\label{sec:methodology}
+
+We describe our pipeline for generating probability-conditioned news articles about future events.
+The system consists of three stages: data collection from prediction markets, article generation with multiple prompting strategies, and evaluation using both automated metrics and \llmjudge.
+
+\subsection{Problem Formulation}
+\label{sec:problem}
+
+Given a prediction market event $e$ with associated question text $q$ and probability estimate $p \in [0, 1]$, our goal is to generate a news article $a$ that:
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item Reads as authentic professional journalism (high \authenticity)
+    \item Presents a plausible scenario for the event (high \plausibility)
+    \item Expresses confidence appropriate to $p$ (high \calibration)
+\end{enumerate}
+
+Formally, we seek a generation function $f: (q, p) \rightarrow a$ such that the resulting article is well-calibrated: articles about high-probability events should use confident language, while articles about low-probability events should include appropriate hedging.
+
+\subsection{Data Collection}
+\label{sec:data}
+
+We collect prediction events from \polymarket using their public API.\footnote{\url{https://gamma-api.polymarket.com}}
+We retrieve 30 active events and select 15 diverse events spanning multiple domains and probability ranges for our experiments.
+
+\para{Event Distribution.}
+\Tabref{tab:events} summarizes the distribution of selected events.
+We observe that the available events skew toward low probabilities (0--20\%), with fewer events in the medium and high probability ranges.
+This distribution reflects the nature of active prediction markets, where many questions concern unlikely but consequential scenarios.
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+        \textbf{Probability Range} & \textbf{Events} & \textbf{Description} \\
+        \midrule
+        0--20\% (Very Low) & 10 & Unlikely events \\
+        60--80\% (High) & 2 & Likely events \\
+        80--100\% (Very High) & 3 & Highly likely events \\
+        \bottomrule
+    \end{tabular}
+    \caption{Distribution of prediction events by probability range. Most events fall in the low-probability range, reflecting typical prediction market composition.}
+    \label{tab:events}
+\end{table}
+
+\para{Example Events.}
+Events span economics (``US Customs Revenue \$100B-\$200B in 2025'', 6\%), legal proceedings (``BitBoy Convicted'', 61\%), immigration policy (``Trump Deport 250,000-500,000 People'', 86\%), and international economics (``Brazil Unemployment Below 6.3\% for Q4 2025'', 95\%).
+
+\subsection{Generation Strategies}
+\label{sec:generation}
+
+We implement four prompting strategies to generate news articles, enabling systematic comparison of probability conditioning approaches.
+
+\para{Zero-Shot (\zeroshot).}
+The baseline approach provides only the event question without probability information:
+\begin{quote}
+\textit{``Write a news article about: [event question]''}
+\end{quote}
+This tests whether LLMs can generate appropriate future news without explicit probability guidance.
+
+\para{Probability-Conditioned (\probcond).}
+Our primary approach explicitly includes the probability estimate:
+\begin{quote}
+\textit{``This event has [X]\% probability according to prediction markets. Write a news article with appropriate confidence level reflecting this probability.''}
+\end{quote}
+This tests whether LLMs can translate numerical probabilities into calibrated narrative confidence.
+
+\para{Scenario-Positive (\scenariopos).}
+This approach assumes the event occurs:
+\begin{quote}
+\textit{``Assume this event HAS HAPPENED. Write a news article reporting on the outcome.''}
+\end{quote}
+
+\para{Scenario-Negative (\scenarioneg).}
+This approach assumes the event does not occur:
+\begin{quote}
+\textit{``Assume this event has NOT HAPPENED. Write a news article reporting on the outcome.''}
+\end{quote}
+
+The scenario-based approaches enable counterfactual news generation for events with known outcomes.
+
+\para{Generation Settings.}
+We use \gptfour with temperature 0.7 for generation.
+Each event is processed with all four strategies, yielding 60 articles total (15 events $\times$ 4 strategies).
+
+\subsection{Evaluation Framework}
+\label{sec:evaluation}
+
+We evaluate generated articles using both \llmjudge and automated linguistic metrics.
+
+\para{LLM-as-Judge Evaluation.}
+We use \gptfour with temperature 0.3 to evaluate each article on three dimensions, each scored 1--5:
+
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item \textbf{Plausibility}: How believable is this as a potential future scenario?
+    \item \textbf{Authenticity}: Does this read like professional journalism?
+    \item \textbf{Calibration}: Does the narrative confidence match the input probability?
+\end{itemize}
+
+We compute an overall quality score as the mean of these three dimensions.
+
+\para{Automated Linguistic Metrics.}
+We extract features capturing the linguistic properties of generated articles:
+
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item \textbf{Word count} and \textbf{sentence count}: Article length
+    \item \textbf{Lexical diversity}: Type-token ratio measuring vocabulary richness
+    \item \textbf{High-confidence markers}: Count of certainty words (``will'', ``confirmed'', ``definitely'')
+    \item \textbf{Low-confidence markers}: Count of hedging words (``may'', ``might'', ``possibly'', ``unlikely'')
+    \item \textbf{Confidence ratio}: High-confidence markers divided by total confidence markers
+\end{itemize}
+
+These metrics enable quantitative analysis of how probability conditioning affects linguistic properties.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/mode_comparison.png}
+    \caption{Overview of the \ours pipeline. We fetch prediction market data, generate articles using four prompting strategies, and evaluate using \llmjudge and automated metrics. Probability-conditioned generation (green) achieves the highest scores across all dimensions.}
+    \label{fig:method}
+\end{figure}

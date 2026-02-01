@@ -1,0 +1,14 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We investigate whether large language models can generate plausible news articles about future events when conditioned on prediction market probabilities.
+Our experiments demonstrate that probability conditioning significantly improves generation quality: probability-conditioned articles achieve 4.53/5 average quality, a 33\% improvement over the 3.40/5 zero-shot baseline.
+Most notably, the probability-conditioned approach achieves perfect calibration (5.0/5), showing that LLMs can translate numerical probabilities into appropriately confident or hedged narrative language.
+
+Our analysis reveals a positive correlation ($r = 0.21$) between input probability and linguistic confidence markers, confirming that the calibration operates at the level of word choice and phrasing.
+High-probability events generate articles with more certainty expressions, while low-probability events produce appropriately hedged text.
+News authenticity remains consistently high across all approaches, indicating that news-style generation is a baseline LLM capability.
+
+These findings establish the feasibility of ``News from the Future'' systems that transform prediction market data into accessible narratives.
+Such systems could support scenario planning, improve probabilistic literacy, and democratize access to the forecasting information aggregated by prediction markets.
+Future work should validate these results with human evaluation, extend to multiple models and languages, and explore interactive applications that generate probability-conditioned news in real time.

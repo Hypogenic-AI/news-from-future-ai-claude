@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "stages": {
+    "resource_finder": {
+      "success": true,
+      "completion_marker": "/data/hypogenicai/workspaces/news-from-future-ai-claude/.resource_finder_complete",
+      "outputs": {
+        "literature_review": "/data/hypogenicai/workspaces/news-from-future-ai-claude/literature_review.md",
+        "resources_catalog": "/data/hypogenicai/workspaces/news-from-future-ai-claude/resources.md",
+        "papers_dir": "/data/hypogenicai/workspaces/news-from-future-ai-claude/papers",
+        "datasets_dir": "/data/hypogenicai/workspaces/news-from-future-ai-claude/datasets",
+        "code_dir": "/data/hypogenicai/workspaces/news-from-future-ai-claude/code"
+      },
+      "log_file": "/data/hypogenicai/workspaces/news-from-future-ai-claude/logs/resource_finder_claude.log",
+      "transcript_file": "/data/hypogenicai/workspaces/news-from-future-ai-claude/logs/resource_finder_claude_transcript.jsonl",
+      "elapsed_time": 954.1356062889099
+    },
+    "experiment_runner": {
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 1096.6364748477936,
+      "log_file": "/data/hypogenicai/workspaces/news-from-future-ai-claude/logs/execution_claude.log",
+      "transcript_file": "/data/hypogenicai/workspaces/news-from-future-ai-claude/logs/execution_claude_transcript.jsonl"
+    }
+  },
+  "work_dir": "/data/hypogenicai/workspaces/news-from-future-ai-claude"
+}

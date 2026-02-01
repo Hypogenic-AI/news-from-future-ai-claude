@@ -1,0 +1,1078 @@
+You are an academic paper writer. Generate a complete NEURIPS style paper
+based on the experiment results provided.
+
+════════════════════════════════════════════════════════════════════════════════
+                         IMPORTANT: BEFORE YOU START
+════════════════════════════════════════════════════════════════════════════════
+
+Before writing any content, you MUST complete these steps:
+
+1. READ THE SKILL: Review the paper-writer skill at templates/skills/paper-writer/SKILL.md
+2. READ THE STYLE GUIDE: Study templates/paper_writing/lab_style_guide.md carefully
+3. REVIEW EXAMPLES: Browse paper_examples/ for formatting and language patterns:
+   - Look at sections/1.introduction.tex for language style
+   - Look at tables/*.tex for table formatting
+   - Look at commands/*.tex for macro usage
+4. USE COMMAND TEMPLATES: Copy templates/paper_writing/commands/ to paper_draft/commands/
+
+CRITICAL: Reference example papers for FORMATTING and LANGUAGE STYLE only.
+Do NOT copy content, phrasing, or narrative structure from the example papers.
+The examples are in a different research domain - focus only on presentation style.
+
+════════════════════════════════════════════════════════════════════════════════
+                            EXPERIMENT REPORT
+════════════════════════════════════════════════════════════════════════════════
+
+# News from the Future: Combining LLMs with Prediction Markets for Future News Generation
+
+## 1. Executive Summary
+
+This research investigates whether Large Language Models (LLMs) can generate plausible news articles about future events when conditioned on prediction market probabilities. We built a pipeline that fetches real prediction market data from Polymarket, generates news articles using GPT-4o with four different prompting strategies, and evaluates the results using LLM-as-judge and automated metrics.
+
+**Key Finding**: Probability-conditioned generation significantly outperforms baseline approaches. Articles generated with explicit probability information achieved an average quality score of 4.53/5, compared to 3.40/5 for zero-shot generation—a 33% improvement. The probability-conditioned approach achieved perfect calibration scores (5.0/5), demonstrating that LLMs can effectively translate numerical probabilities into appropriately confident narrative language.
+
+**Practical Implications**: This research demonstrates the feasibility of &#34;News from the Future&#34; websites that could transform prediction market data into accessible, engaging narratives. Such systems could support scenario planning, improve probabilistic literacy, and make forecast information more comprehensible to general audiences.
+
+---
+
+## 2. Goal
+
+### Research Question
+Can LLMs generate plausible news articles about future events when conditioned on prediction market probabilities?
+
+### Hypothesis
+We hypothesized that:
+1. LLMs can generate syntactically and stylistically correct news articles about future events
+2. Probability conditioning improves the plausibility of generated content
+3. Generated content reflects input probabilities appropriately (calibration)
+
+### Why This Matters
+- **Information Accessibility**: Prediction markets aggregate valuable forecasting information, but raw probabilities (e.g., &#34;62% chance of X&#34;) are difficult for most people to interpret
+- **Scenario Planning**: Organizations need to envision multiple future scenarios; automated generation of realistic future news helps stakeholders visualize possibilities
+- **Educational Value**: News narratives can help users grasp probabilistic thinking more intuitively than numerical estimates
+
+### Expected Impact
+This research contributes to the emerging field of probability-conditioned text generation and demonstrates a novel application combining forecasting with narrative generation.
+
+---
+
+## 3. Data Construction
+
+### Dataset Description
+
+**Source**: Polymarket API (live prediction market data)
+**Collection Date**: January 31, 2026
+**Total Events Retrieved**: 30 from live API
+**Events Used**: 15 diverse events across probability ranges
+
+### Event Distribution
+
+| Probability Range | Events | Description |
+|-------------------|--------|-------------|
+| 0-20% (Very Low) | 10 | Unlikely events |
+| 60-80% (High) | 2 | Likely events |
+| 80-100% (Very High) | 3 | Highly likely events |
+
+### Example Events
+
+1. **[6%] US Customs Revenue $100B-$200B in 2025**
+   Category: Economics/Government
+
+2. **[61%] BitBoy Convicted**
+   Category: Legal/Cryptocurrency
+
+3. **[86%] Trump Deport 250,000-500,000 People**
+   Category: Immigration/Politics
+
+4. **[95%] Brazil Unemployment Below 6.3% for Q4 2025**
+   Category: Economics/International
+
+### Data Quality
+- All events had well-defined resolution criteria
+- Events spanned multiple domains: economics, politics, technology, legal
+- Probability data was live from active prediction markets
+
+### Processing
+- Events were filtered for valid questions (&gt;10 characters)
+- Probabilities extracted from market outcome prices
+- Resolution dates and category information preserved
+
+---
+
+## 4. Experiment Description
+
+### Methodology
+
+#### High-Level Approach
+We implemented a three-stage pipeline:
+1. **Data Collection**: Fetch prediction events from Polymarket API
+2. **Article Generation**: Generate news articles using GPT-4o with four prompting strategies
+3. **Evaluation**: Assess quality using LLM-as-judge (GPT-4o) and automated metrics
+
+#### Why This Method?
+- **Real API Data**: Using live prediction market data ensures ecological validity
+- **Multiple Generation Modes**: Testing different prompting strategies allows comparison
+- **LLM-as-Judge**: Automated evaluation enables scalable assessment while capturing subjective qualities like plausibility
+
+### Implementation Details
+
+#### Tools and Libraries
+- **OpenAI API**: GPT-4o for generation and evaluation
+- **Polymarket API**: Live prediction market data
+- **Python 3.12**: Core implementation
+- **Key Libraries**: openai (2.16.0), httpx, pandas, numpy, matplotlib, seaborn
+
+#### Generation Modes
+
+| Mode | Description | Prompt Strategy |
+|------|-------------|-----------------|
+| **Zero-Shot** | No probability input | &#34;Write a news article about: [event]&#34; |
+| **Probability-Conditioned** | Explicit probability | &#34;This event has X% probability. Write with appropriate confidence.&#34; |
+| **Scenario-Positive** | Assume event occurs | &#34;Assume this HAS HAPPENED. Report on the outcome.&#34; |
+| **Scenario-Negative** | Assume event doesn&#39;t occur | &#34;Assume this has NOT HAPPENED. Report on the outcome.&#34; |
+
+#### Evaluation Metrics
+
+**LLM-as-Judge (1-5 scale)**:
+- **Plausibility**: How believable is this as a future scenario?
+- **Authenticity**: Does it read like real professional journalism?
+- **Calibration**: Does narrative confidence match input probability?
+
+**Automated Metrics**:
+- Word count, sentence count
+- Lexical diversity (type-token ratio)
+- Confidence markers (high/low confidence language)
+- Hedging phrase count
+
+### Experimental Protocol
+
+- **Number of Events**: 15
+- **Generation Modes**: 4
+- **Total Articles Generated**: 60
+- **Model**: GPT-4o (temperature=0.7)
+- **Evaluation Model**: GPT-4o (temperature=0.3)
+- **Random Seed**: 42
+- **Execution Time**: ~10 minutes (generation + evaluation)
+
+---
+
+## 5. Results
+
+### Generation Mode Comparison
+
+| Mode | Plausibility | Authenticity | Calibration | Overall | Std Dev |
+|------|--------------|--------------|-------------|---------|---------|
+| **Probability-Conditioned** | 4.27 | 4.33 | **5.00** | **4.53** | 0.34 |
+| Scenario-Negative | 4.20 | 4.40 | 4.27 | 4.29 | 0.59 |
+| Scenario-Positive | 3.13 | 4.13 | 3.33 | 3.53 | 1.01 |
+| Zero-Shot | 3.07 | 4.00 | 3.13 | 3.40 | 0.93 |
+
+**Key Observations**:
+- **Probability-conditioned generation achieved the highest overall quality (4.53/5)**, 33% higher than zero-shot baseline (3.40/5)
+- **Perfect calibration (5.0/5)** for probability-conditioned mode demonstrates LLMs can translate probabilities to narrative confidence
+- **Scenario-negative outperformed scenario-positive**, likely because low-probability events (most of our data) make more sense when reported as not occurring
+- **Authenticity was consistently high (4.0-4.4)** across all modes, showing LLMs can reliably produce news-style writing
+
+### Calibration Analysis
+
+| Probability Range | Articles | Calibration Score | Confidence Ratio | High Conf. Markers | Low Conf. Markers |
+|-------------------|----------|-------------------|------------------|--------------------|--------------------|
+| 0-20% (Very Low) | 40 | 3.68 | 0.29 | 1.65 | 2.60 |
+| 60-80% (High) | 8 | 3.88 | 0.31 | 1.75 | 3.00 |
+| 80-100% (Very High) | 12 | **4.83** | **0.39** | 1.83 | 1.75 |
+
+**Overall Probability-Confidence Correlation**: r = 0.21
+
+**Key Observations**:
+- **Higher probability events showed better calibration** (4.83/5 for 80-100% vs. 3.68/5 for 0-20%)
+- **High-confidence markers increased with probability** (1.65 → 1.83)
+- **Low-confidence markers decreased with probability** (2.60 → 1.75)
+- The positive correlation (r = 0.21) indicates the system appropriately adjusts language based on probability
+
+### Quality Distribution
+
+![Mode Comparison](results/figures/mode_comparison.png)
+
+The visualization shows the clear advantage of probability-conditioned generation across all metrics, with particularly strong performance on calibration.
+
+### Example Generated Articles
+
+#### Example 1: Probability-Conditioned (6% probability event)
+
+**Event**: Will the U.S. collect between $100b and $200b in revenue in 2025?
+**Probability**: 6%
+
+**Generated Headline**: &#34;U.S. Customs Revenue Unlikely to Hit $100 Billion Mark in 2025, Experts Say&#34;
+
+**Generated Article Excerpt**:
+&gt; &#34;The U.S. government&#39;s customs revenue for the fiscal year 2025, recently reported at $82.2 billion, has fallen short of the ambitious $100 billion benchmark, according to the latest Financial Report... Experts suggest that significant hurdles remain in achieving such a revenue milestone, casting doubt on predictions that customs duties could hit the $100 billion to $200 billion range anytime soon.&#34;
+
+**Analysis**: The article appropriately uses hedging language (&#34;unlikely,&#34; &#34;casting doubt&#34;) matching the low probability. The narrative frames the shortfall as expected rather than surprising.
+
+#### Example 2: Zero-Shot vs. Probability-Conditioned Comparison
+
+**Event**: Will Trump deport 1,000,000-1,250,000 people?
+**Probability**: 1%
+
+**Zero-Shot Headline**: &#34;Trump Administration Exceeds Deportation Target in 2025, ICE Report Reveals&#34;
+(Generated as if the event happened—inappropriate for 1% probability)
+
+**Probability-Conditioned Headline**: &#34;Experts Skeptical as Trump Administration Considers Mass Deportations in 2025&#34;
+(Appropriately frames as unlikely, uses hedging language)
+
+**Analysis**: Without probability information, the zero-shot approach defaulted to assuming the event occurred, which is inappropriate for a 1% probability event. The probability-conditioned approach correctly framed the story around skepticism and low likelihood.
+
+---
+
+## 6. Analysis
+
+### Key Findings
+
+1. **Probability conditioning significantly improves plausibility and calibration**
+   - 33% improvement in overall quality vs. zero-shot baseline
+   - Perfect calibration scores (5.0/5) when probability is provided
+
+2. **LLMs can translate probabilities to appropriate narrative confidence**
+   - High-probability events described with certainty (&#34;will,&#34; &#34;confirmed&#34;)
+   - Low-probability events described with hedging (&#34;may,&#34; &#34;unlikely,&#34; &#34;speculation&#34;)
+   - Positive correlation between probability and confidence markers
+
+3. **News authenticity is consistent across approaches**
+   - All modes achieved 4.0-4.4/5 on authenticity
+   - LLMs reliably produce professional journalistic style
+
+4. **Scenario-based generation shows interesting asymmetry**
+   - Scenario-negative (4.29/5) outperformed scenario-positive (3.53/5)
+   - This may reflect that most events were low-probability, making &#34;did not occur&#34; more natural
+
+### Hypothesis Testing Results
+
+| Hypothesis | Result | Evidence |
+|------------|--------|----------|
+| H1: LLMs can generate news-style articles | **Supported** | Avg authenticity 4.22/5 across all modes |
+| H2: Probability conditioning improves plausibility | **Supported** | 4.27/5 vs 3.07/5 (p &lt; 0.05 via t-test) |
+| H3: Generated content is calibrated to probability | **Supported** | r = 0.21 correlation; perfect calibration (5.0/5) in conditioned mode |
+
+### Comparison to Literature
+
+- **ForecastBench** showed LLMs achieve Brier scores of ~0.122-0.136 for forecasting. Our work extends this by showing LLMs can also *communicate* forecasts through narrative.
+- **FakeGPT** demonstrated LLMs can generate realistic news. Our contribution is conditioning this generation on probability estimates.
+
+### Surprises and Insights
+
+1. **Perfect calibration was achievable**: We expected some calibration improvement, but achieving 5.0/5 in the probability-conditioned mode exceeded expectations.
+
+2. **Authenticity was a solved problem**: Across all conditions, articles read like professional journalism, suggesting this is now a baseline LLM capability.
+
+3. **Scenario-negative worked better**: For low-probability events (most of our data), framing the story as &#34;this didn&#39;t happen&#34; produced more plausible narratives.
+
+### Error Analysis
+
+**Common Issues**:
+- Some articles included formatting artifacts (e.g., `**HEADLINE:**` in output)
+- Scenario-positive mode for very unlikely events sometimes produced implausible narratives
+- Some articles generated fictional expert quotes that sounded generic
+
+**Systematic Patterns**:
+- Zero-shot mode defaulted to optimistic framing regardless of probability
+- Low-probability events were harder to frame when assuming they occurred
+
+### Limitations
+
+1. **Single Model**: Only tested with GPT-4o; results may differ with other models
+2. **LLM-as-Judge**: Evaluation used same model family as generation, potential bias
+3. **Limited Event Diversity**: Most events were low-probability (0-20% range)
+4. **No Human Evaluation**: Relied entirely on automated evaluation
+5. **English Only**: All generation and evaluation in English
+
+---
+
+## 7. Conclusions
+
+### Summary
+
+This research demonstrates that LLMs can generate plausible, well-calibrated news articles about future events when conditioned on prediction market probabilities. The probability-conditioned approach achieved:
+
+- **4.53/5 average quality** (33% improvement over baseline)
+- **5.0/5 calibration score** (perfect translation of probability to narrative confidence)
+- **Consistent news authenticity** (4.33/5)
+
+### Implications
+
+**Practical Applications**:
+- &#34;News from the Future&#34; websites are technically feasible
+- Prediction market data can be made more accessible through narrative
+- Scenario planning tools can generate realistic future news for strategy exercises
+
+**Research Contributions**:
+- First systematic study of probability-conditioned news generation
+- Demonstrates LLMs can translate numerical probabilities to calibrated narratives
+- Provides methodology for evaluating future news generation systems
+
+### Confidence in Findings
+
+**High Confidence**:
+- Probability conditioning improves quality
+- LLMs can produce authentic news-style writing
+- Calibration is achievable with explicit probability input
+
+**Moderate Confidence**:
+- Generalization to other models and languages
+- Human perception would match LLM-as-judge scores
+
+---
+
+## 8. Next Steps
+
+### Immediate Follow-ups
+
+1. **Human Evaluation**: Recruit evaluators to validate LLM-as-judge findings
+2. **Multi-Model Comparison**: Test Claude, Gemini, and other models
+3. **Probability Range Expansion**: Generate more events in medium probability range (30-70%)
+
+### Alternative Approaches
+
+1. **Fine-tuned Models**: Train specialized news generation model on real articles
+2. **Retrieval Augmentation**: Include current news context for more grounded generation
+3. **Interactive System**: Build web interface for real-time future news generation
+
+### Broader Extensions
+
+1. **Multi-scenario Generation**: Generate multiple versions showing different outcomes
+2. **Temporal Consistency**: Chain articles over time for consistent narrative
+3. **Uncertainty Visualization**: Combine text with probability visualizations
+4. **Ethical Safeguards**: Implement clear labeling and misuse prevention
+
+### Open Questions
+
+1. How do humans perceive probability-conditioned vs. unconditioned articles?
+2. Can this approach help improve probabilistic literacy?
+3. What safeguards prevent misuse for misinformation?
+4. How to handle rapidly changing probabilities?
+
+---
+
+## References
+
+### Papers
+
+1. Karger et al. (2024). &#34;ForecastBench: A Dynamic Benchmark of AI Forecasting Capabilities.&#34; ICLR 2025. arXiv:2409.19839
+2. Huang et al. (2023). &#34;FakeGPT: Fake News Generation, Explanation and Detection of Large Language Models.&#34; arXiv:2310.05046
+3. Schoenegger et al. (2024). &#34;AI-Augmented Predictions: LLM Assistants Improve Human Forecasting Accuracy.&#34; arXiv:2402.07862
+4. Guan et al. (2024). &#34;OpenEP: Open-Ended Future Event Prediction.&#34; arXiv:2408.06578
+
+### Datasets and Tools
+
+- Polymarket API: https://gamma-api.polymarket.com
+- OpenAI GPT-4o: https://platform.openai.com
+
+### Code
+
+All code for this research is available in the `src/` directory:
+- `prediction_markets.py`: Data collection module
+- `news_generator.py`: Article generation pipeline
+- `evaluation.py`: Evaluation framework
+- `run_experiment.py`: Main experiment runner
+- `create_visualizations.py`: Visualization generation
+
+
+════════════════════════════════════════════════════════════════════════════════
+                            RESEARCH PLAN
+════════════════════════════════════════════════════════════════════════════════
+
+# Research Plan: News from the Future
+
+## Motivation &amp; Novelty Assessment
+
+### Why This Research Matters
+
+The ability to generate plausible news articles about future events has significant applications:
+
+1. **Scenario Planning**: Organizations need to envision multiple future scenarios for strategic planning. Automated generation of realistic future news helps stakeholders visualize possible outcomes.
+
+2. **Educational Value**: Understanding how prediction markets estimate probabilities of future events, combined with narrative presentation, helps users grasp probabilistic thinking.
+
+3. **Information Synthesis**: Prediction markets aggregate distributed knowledge effectively (Brier score ~0.121 for crowd median), but numerical probabilities are hard for humans to interpret. News narratives make this information accessible.
+
+4. **Risk Communication**: Presenting potential future outcomes as narratives (rather than raw statistics) improves comprehension and engagement with forecast information.
+
+### Gap in Existing Work (Based on Literature Review)
+
+The literature review reveals:
+
+1. **No direct combination exists**: No existing work combines prediction markets with news generation.
+2. **LLM forecasting is established**: ForecastBench shows LLMs achieve Brier ~0.122-0.136, comparable to crowd predictions.
+3. **Fake news generation is well-studied**: FakeGPT demonstrates LLMs can generate highly realistic news content.
+4. **Future-oriented generation is unexplored**: Most synthetic news research focuses on misinformation about past/present events.
+
+**The gap**: While LLMs can forecast (ForecastBench) and generate realistic news (FakeGPT), no one has combined prediction market probabilities with news generation to create probability-conditioned future news.
+
+### Our Novel Contribution
+
+We propose and evaluate a system that:
+1. **Sources probabilities from prediction markets** (Polymarket, Metaculus)
+2. **Conditions LLM generation on these probabilities** to create plausible future news
+3. **Evaluates calibration** - does the generated content&#39;s confidence match input probabilities?
+4. **Evaluates plausibility** - do humans find the generated articles believable?
+
+This is the first systematic study of probability-conditioned future news generation.
+
+### Experiment Justification
+
+| Experiment | Why Needed |
+|------------|------------|
+| **Baseline: Zero-shot generation** | Establishes performance without probability conditioning |
+| **Probability-conditioned generation** | Tests main hypothesis - does probability input improve plausibility? |
+| **Multi-scenario generation** | Tests ability to generate contrasting scenarios for same question |
+| **Human evaluation** | Automated metrics insufficient for news plausibility |
+| **Calibration analysis** | Tests if narrative confidence matches input probability |
+
+---
+
+## Research Question
+
+**Primary Question**: Can LLMs generate plausible news articles about future events when conditioned on prediction market probabilities?
+
+**Sub-questions**:
+1. Does probability conditioning improve perceived plausibility vs. unconditioned generation?
+2. Are generated narratives well-calibrated (e.g., 80% probability events described with appropriate confidence)?
+3. What prompting strategies produce the most realistic future news?
+4. How do different LLMs compare in this task?
+
+---
+
+## Background and Motivation
+
+Prediction markets aggregate distributed knowledge about future events into probability estimates. However, raw probabilities (e.g., &#34;62% chance of X&#34;) are difficult for most people to interpret and engage with. News articles, by contrast, are a familiar format for conveying information.
+
+This research explores whether LLMs can bridge this gap by generating realistic news articles about future events, conditioned on prediction market probabilities. The hypothesis is that such a system could:
+- Make probabilistic forecasts more accessible
+- Support scenario planning and decision-making
+- Demonstrate a novel application of LLM capabilities
+
+---
+
+## Hypothesis Decomposition
+
+### H1: LLMs can generate syntactically and stylistically correct news articles about future events
+- **Metric**: News style scoring, grammatical correctness
+- **Baseline**: XSum dataset articles
+
+### H2: Probability conditioning improves the plausibility of generated content
+- **Metric**: Human plausibility ratings (1-5 scale)
+- **Comparison**: Conditioned vs. unconditioned generation
+
+### H3: Generated content reflects input probabilities appropriately (calibration)
+- **Metric**: Linguistic confidence markers correlate with input probability
+- **Measurement**: Extract hedging language, certainty expressions
+
+### H4: Generated news is distinguishable from real news but not implausibly so
+- **Metric**: Human detection rate
+- **Target**: 60-80% detection (too easy = implausible, too hard = potential misuse concern)
+
+---
+
+## Proposed Methodology
+
+### Approach
+
+We will build a pipeline that:
+1. **Fetches prediction market data** (Polymarket API)
+2. **Generates news articles** conditioned on event questions and probabilities
+3. **Evaluates quality** through automated metrics and human evaluation
+
+### Architecture
+
+```
+┌─────────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐
+│  Prediction Market  │────▶│   LLM Generation     │────▶│   Evaluation        │
+│  API (Polymarket)   │     │   Pipeline           │     │   Framework         │
+└─────────────────────┘     └──────────────────────┘     └─────────────────────┘
+        │                            │                            │
+        ▼                            ▼                            ▼
+  - Event question            - Prompt engineering          - Automated metrics
+  - Current probability       - Multiple models             - Human evaluation
+  - Resolution date           - Scenario generation         - Calibration analysis
+```
+
+### Experimental Steps
+
+**Step 1: Data Collection**
+- Fetch 20-30 prediction market events from Polymarket API
+- Select diverse topics: politics, economics, technology, sports
+- Record: question, probability, resolution date, context
+
+**Step 2: Baseline Generation (Zero-shot)**
+- Generate news articles without probability input
+- Use GPT-4.1 and Claude Sonnet 4.5
+- Simple prompt: &#34;Write a news article about: [event question]&#34;
+
+**Step 3: Probability-Conditioned Generation**
+- Include probability in prompt
+- Test multiple prompting strategies:
+  - Direct probability mention: &#34;Given 75% probability...&#34;
+  - Implicit conditioning: &#34;This outcome is considered likely...&#34;
+  - Scenario-based: &#34;Assuming this event occurs...&#34;
+
+**Step 4: Multi-Scenario Generation**
+- For each event, generate contrasting articles:
+  - High-probability outcome (event happens)
+  - Low-probability outcome (event doesn&#39;t happen)
+- Evaluate internal consistency
+
+**Step 5: Evaluation**
+- Automated: Perplexity, lexical diversity, confidence markers
+- Human: Plausibility ratings, detectability, calibration perception
+
+### Baselines
+
+| Baseline | Description | Purpose |
+|----------|-------------|---------|
+| **Zero-shot** | No probability input | Tests if probability helps |
+| **Random probability** | Use unrelated probability | Tests specificity of conditioning |
+| **Real news** | Actual news articles | Upper bound for style quality |
+
+### Evaluation Metrics
+
+**Automated Metrics**:
+- **Perplexity**: Lower = more fluent (measure with small LM)
+- **Lexical diversity**: Type-token ratio, vocabulary richness
+- **Confidence markers**: Count hedging words vs. certainty expressions
+- **News style adherence**: Structure, quote patterns, source references
+
+**Human Evaluation**:
+- **Plausibility** (1-5): How believable is this article?
+- **News authenticity** (1-5): Does this read like real news?
+- **Calibration perception**: Does the confidence level match the claimed probability?
+- **Detection**: Can evaluators identify which articles are generated?
+
+### Statistical Analysis Plan
+
+- **Significance level**: α = 0.05
+- **Tests**:
+  - Paired t-tests for within-model comparisons (conditioned vs. unconditioned)
+  - ANOVA for multi-model comparisons
+  - Spearman correlation for calibration analysis
+- **Effect sizes**: Cohen&#39;s d for pairwise comparisons
+- **Multiple comparison correction**: Bonferroni where applicable
+
+---
+
+## Expected Outcomes
+
+### Supporting the Hypothesis
+- Probability-conditioned articles rated significantly more plausible (p &lt; 0.05)
+- Strong correlation (r &gt; 0.5) between input probability and extracted confidence markers
+- Humans rate articles as moderately authentic (3-4 out of 5)
+
+### Refuting the Hypothesis
+- No significant difference between conditioned and unconditioned generation
+- Poor calibration (confidence markers don&#39;t correlate with probability)
+- Very low plausibility ratings (&lt; 2 out of 5)
+
+---
+
+## Timeline and Milestones
+
+| Phase | Tasks | Estimated Time |
+|-------|-------|----------------|
+| Phase 1 | Environment setup, data collection | 20-30 min |
+| Phase 2 | Implement generation pipeline | 45-60 min |
+| Phase 3 | Run experiments | 30-45 min |
+| Phase 4 | Analysis and evaluation | 30-45 min |
+| Phase 5 | Documentation | 20-30 min |
+
+---
+
+## Potential Challenges
+
+| Challenge | Mitigation |
+|-----------|------------|
+| **API rate limits** | Cache responses, batch requests |
+| **Prediction market data quality** | Filter for well-defined events |
+| **LLM safety filters** | Use legitimate research framing |
+| **Human evaluation resources** | Use LLM-as-judge for initial pass |
+| **Calibration measurement** | Use established confidence lexicons |
+
+---
+
+## Success Criteria
+
+1. **Minimum**: Generate 50+ news articles across 20+ events
+2. **Target**: Show statistically significant improvement from probability conditioning
+3. **Stretch**: Demonstrate good calibration (r &gt; 0.5 between probability and confidence)
+
+---
+
+## Ethical Considerations
+
+- All generated content will be clearly labeled as synthetic
+- No intention to deceive or spread misinformation
+- Focus on demonstrating capabilities for legitimate use cases (scenario planning, education)
+- Discussion of potential misuse and safeguards in final report
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          LITERATURE REVIEW
+════════════════════════════════════════════════════════════════════════════════
+
+# Literature Review: News from the Future
+
+## Research Hypothesis
+A website that combines large language models (LLMs) with prediction markets can generate plausible news articles about future events.
+
+---
+
+## 1. Research Area Overview
+
+This research lies at the intersection of three rapidly evolving fields:
+1. **LLM-based text generation** - particularly news article generation
+2. **Forecasting and prediction markets** - probabilistic prediction of future events
+3. **Synthetic content generation** - generating realistic but hypothetical content
+
+The hypothesis combines LLMs&#39; generative capabilities with prediction markets&#39; probability estimates to create plausible future news. This is a novel application that draws from recent advances in each area.
+
+---
+
+## 2. Key Papers
+
+### 2.1 LLM Forecasting Capabilities
+
+#### ForecastBench (Karger et al., 2024) - ICLR 2025
+- **arXiv**: 2409.19839
+- **Key Contribution**: Dynamic benchmark for evaluating LLM forecasting against human superforecasters
+- **Methodology**: 1,000 forecasting questions from prediction markets (Metaculus, Polymarket, Manifold) and datasets (ACLED, FRED, Wikipedia)
+- **Key Results**:
+  - Superforecasters achieve Brier score of 0.096
+  - Best LLM (Claude 3.5 Sonnet with scratchpad + freeze values): 0.122
+  - LLMs perform significantly worse than expert forecasters (p &lt; 0.001)
+  - Linear correlation between general LLM capability and forecasting accuracy (r = -0.68)
+- **Relevance**: Establishes baseline for LLM forecasting accuracy; shows LLMs can approximate crowd predictions but not expert-level accuracy
+- **Code**: https://github.com/forecastingresearch/forecastbench
+
+#### AI-Augmented Predictions (Schoenegger et al., 2024)
+- **arXiv**: 2402.07862
+- **Key Contribution**: LLM assistants improve human forecasting accuracy by 24-41%
+- **Methodology**: N=991 participants with two types of LLM assistants (superforecasting vs. noisy)
+- **Key Results**:
+  - Even noisy LLM assistants improved human accuracy by 24%
+  - Superforecasting-prompted assistants improved accuracy by 41%
+  - Human-AI collaboration outperforms either alone
+- **Relevance**: Demonstrates that LLMs can augment human judgment for forecasting, suggesting hybrid approaches
+
+#### OpenEP: Open-Ended Future Event Prediction (Guan et al., 2024)
+- **arXiv**: 2408.06578
+- **Key Contribution**: Framework for predicting future events in open-ended (free-form) format
+- **Methodology**:
+  - Questions from 7 perspectives: time, location, event development, outcome, impact, response, other
+  - Uses hot topics from Zhihu (Chinese) and Google News (English)
+  - 15-day prediction window
+  - LLM-based evaluation metrics (accuracy, completeness, relevance, specificity, reasonableness)
+- **Key Results**: Accurately predicting future events in open-ended settings remains challenging for LLMs
+- **Relevance**: Directly relevant - provides framework for generating predictions about future events
+
+### 2.2 Fake News and Synthetic News Generation
+
+#### FakeGPT (Huang et al., 2023)
+- **arXiv**: 2310.05046
+- **Key Contribution**: Comprehensive study of ChatGPT for fake news generation, explanation, and detection
+- **Methodology**:
+  - Four prompting methods for generation: (a) altering text meaning, (b) inventing stories, (c) creating imaginary text, (d) multiple prompts
+  - Nine features characterizing fake news identified
+  - Reason-aware prompting for detection
+- **Key Results**:
+  - Humans achieved only 54.8% accuracy in identifying LLM-generated fake news
+  - Self-evaluation: ChatGPT detected 72.5% of its own generated fake news
+  - Multiple prompts method most effective at bypassing safety filters
+  - Nine features of fake news: emotional bias, lack of evidence, conflicting facts, informal language, insufficient support, lack of context, misinterpretation, oversimplification, doctored media
+- **Key Datasets Used**: COVID-19, FakeNewsAMT, Celebrity, LIAR, Weibo21, Kaggle, Chinese Rumor, FakeNewsNet, Twitter15&amp;16
+- **Relevance**: Provides methodology for generating realistic news content; identifies quality features to optimize
+
+#### Synthetic News Generation for Fake News Classification (2025)
+- **arXiv**: 2503.24206
+- **Relevance**: Recent work on synthetic news generation for training fake news detectors
+
+#### On LLMs-Driven Synthetic Data Generation (Long et al., 2024)
+- **arXiv**: 2406.15126
+- **Key Contribution**: Comprehensive survey on LLM-driven synthetic data generation, curation, and evaluation
+- **Relevance**: Provides best practices for generating high-quality synthetic content
+
+### 2.3 Controllable Text Generation
+
+#### Air-Decoding (Wang et al., 2023)
+- **arXiv**: 2310.14892
+- **Key Contribution**: Attribute distribution reconstruction for decoding-time controllable text generation
+- **Relevance**: Methods for controlling attributes (like news style, topic, tone) during generation
+
+#### Controllable Stylistic Text Generation (2025)
+- **arXiv**: 2510.06386
+- **Key Contribution**: Train-time attribute-regularized diffusion for controllable generation
+- **Relevance**: Techniques for ensuring generated news matches target style
+
+#### Controllable Mixed-Initiative Dialogue Generation (2023)
+- **arXiv**: 2305.04147
+- **Relevance**: Prompting methods for controllable generation
+
+### 2.4 Hallucination and Factuality
+
+#### Hallucination Detection with Small Language Models (2025)
+- **arXiv**: 2506.22486
+- **Key Contribution**: Detecting hallucinated content in LLM outputs
+- **Relevance**: Critical for ensuring generated &#34;future news&#34; remains plausible rather than fantastical
+
+#### LLM-Generated Text Detection Survey (2023)
+- **arXiv**: 2310.14724
+- **Key Contribution**: Survey on detecting LLM-generated content
+- **Relevance**: Understanding what makes generated content detectable vs. realistic
+
+---
+
+## 3. Common Methodologies
+
+### 3.1 Prompting Strategies
+- **Zero-shot**: Direct prompting without examples
+- **Scratchpad**: Chain-of-thought reasoning for forecasting
+- **Multiple prompts**: Progressive prompting to bypass safety filters (FakeGPT)
+- **Reason-aware prompts**: Including feature descriptions to guide generation/detection
+
+### 3.2 Retrieval Augmentation
+- News API integration for current events
+- Knowledge base retrieval for factual grounding
+- Historical event retrieval for pattern recognition (OpenEP)
+
+### 3.3 Evaluation Metrics
+- **Forecasting**: Brier score (lower is better, 0.25 = uninformed)
+- **Text Quality**: ROUGE scores, BLEU, perplexity
+- **Fake News**: Accuracy, F1, human evaluation
+- **Open-Ended**: LLM-based evaluation on accuracy, completeness, relevance, specificity, reasonableness
+
+---
+
+## 4. Standard Baselines
+
+| Baseline | Description | Typical Performance |
+|----------|-------------|---------------------|
+| Superforecasters | Expert human forecasters | Brier ~0.096 |
+| Crowd median | Aggregated public forecasts | Brier ~0.121 |
+| GPT-4/Claude 3.5 | Frontier LLMs with RAG | Brier ~0.122-0.136 |
+| LLM ensemble | Multiple models aggregated | Similar to single best |
+| Random/Uninformed | 50% probability | Brier = 0.25 |
+
+---
+
+## 5. Datasets in the Literature
+
+| Dataset | Task | Source | Size |
+|---------|------|--------|------|
+| ForecastBench | Forecasting | Metaculus, Polymarket, etc. | 1000+ questions |
+| LIAR | Fake news detection | PolitiFact | 12.8K statements |
+| FakeNewsNet | Fake news + social | GossipCop, PolitiFact | Large |
+| XSum | News summarization | BBC | 226K articles |
+| COVID-19 | Fake news | Various | Medium |
+| OpenEPBench | Event prediction | Zhihu, Google News | Growing |
+
+---
+
+## 6. Gaps and Opportunities
+
+### 6.1 Current Gaps
+1. **No direct combination**: No existing work combines prediction markets with news generation
+2. **Future-oriented generation**: Most fake news research focuses on misinformation about past/present, not future
+3. **Plausibility calibration**: No framework for calibrating &#34;plausibility&#34; of generated future scenarios
+4. **Dynamic content**: Existing work is static; no system updates predictions based on new information
+
+### 6.2 Research Opportunities
+1. **Probability-conditioned generation**: Generate news conditional on probability estimates from markets
+2. **Scenario branching**: Multiple news versions for different outcome probabilities
+3. **Temporal consistency**: Ensuring generated news is temporally consistent with prediction timelines
+4. **Uncertainty communication**: Incorporating uncertainty into news narrative
+
+---
+
+## 7. Recommendations for Experiment Design
+
+### 7.1 Recommended Datasets
+1. **ForecastBench** (primary): Use for sourcing prediction market questions and probabilities
+2. **XSum**: For fine-tuning news generation style
+3. **LIAR/FakeNewsNet**: For evaluating realism of generated content
+
+### 7.2 Recommended Baselines
+1. **LLM-only generation**: Generate news without probability conditioning
+2. **Human-written hypothetical news**: For quality comparison
+3. **Random probability assignment**: To test if probability information helps
+
+### 7.3 Recommended Metrics
+1. **Plausibility**: Human evaluation of how plausible the news seems
+2. **Consistency**: Does news match the probability (e.g., high-probability events described confidently)?
+3. **Calibration**: Across many generations, do described outcomes match input probabilities?
+4. **Detectability**: Can humans/detectors identify content as synthetic?
+
+### 7.4 Methodological Considerations
+1. **Prompt engineering**: Start with multiple prompts approach from FakeGPT
+2. **Retrieval augmentation**: Include current context (similar to ForecastBench methodology)
+3. **Probability injection**: Condition generation on prediction market probabilities
+4. **Evaluation pipeline**: Combine automated metrics with human evaluation
+
+---
+
+## 8. Key Technical Challenges
+
+1. **Hallucination control**: Preventing LLMs from generating implausible details
+2. **Probability translation**: Converting numerical probabilities to appropriate narrative confidence
+3. **Temporal grounding**: Ensuring future dates and timelines are consistent
+4. **Style matching**: Generating content that matches real news article style
+5. **Ethical considerations**: Clearly labeling synthetic content, preventing misuse
+
+---
+
+## 9. Summary
+
+The &#34;News from the Future&#34; research combines three mature research areas in a novel way:
+
+- **LLM forecasting** shows LLMs can approximate (but not match) human expert predictions
+- **Fake news generation** demonstrates LLMs can produce highly realistic news content
+- **Controllable generation** provides techniques for conditioning output on specific attributes
+
+The key innovation would be using prediction market probabilities to condition news generation, creating probabilistically-calibrated hypothetical news about future events. This has not been attempted in existing literature and represents a genuine research contribution.
+
+**Critical success factors**:
+1. Using ForecastBench methodology for probability sourcing
+2. Applying FakeGPT-style prompting for realistic generation
+3. Implementing strong evaluation including human judgment
+4. Ensuring generated content is clearly labeled as hypothetical
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          PAPER REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+Generate a complete academic paper with the following structure:
+
+1. TITLE
+   - Clear, specific, informative
+   - Should convey main finding or contribution
+
+2. ABSTRACT (150-250 words)
+   - Problem statement
+   - Approach
+   - Key results
+   - Significance
+
+3. INTRODUCTION
+   - Research problem and motivation
+   - Gap in existing work
+   - Our contribution (be specific)
+   - Paper organization
+
+4. RELATED WORK
+   - Organized by theme/approach
+   - Position our work relative to prior work
+   - Cite papers from literature review
+
+5. METHODOLOGY
+   - Clear description of approach
+   - Experimental setup
+   - Datasets used
+   - Evaluation metrics
+   - Baselines
+
+6. RESULTS
+   - Present results with tables and figures
+   - Statistical analysis
+   - Comparison to baselines
+   - Ablation studies (if applicable)
+
+7. DISCUSSION
+   - Interpretation of results
+   - Limitations
+   - Broader implications
+
+8. CONCLUSION
+   - Summary of contributions
+   - Key findings
+   - Future work
+
+9. REFERENCES
+   - BibTeX format
+   - All cited papers
+
+════════════════════════════════════════════════════════════════════════════════
+                          OUTPUT FORMAT
+════════════════════════════════════════════════════════════════════════════════
+
+Create a MODULAR LaTeX project with the following directory structure:
+
+paper_draft/
+├── main.tex              # Main file that imports all sections
+├── references.bib        # BibTeX references
+├── sections/
+│   ├── abstract.tex      # Abstract content
+│   ├── introduction.tex  # Introduction section
+│   ├── related_work.tex  # Related work section
+│   ├── methodology.tex   # Methodology section
+│   ├── results.tex       # Results section
+│   ├── discussion.tex    # Discussion section
+│   └── conclusion.tex    # Conclusion section
+├── figures/              # Directory for any generated figures
+├── tables/               # Directory for complex standalone tables
+└── appendix/             # Directory for appendix sections (if needed)
+
+INSTRUCTIONS:
+1. First, create the directory structure above (mkdir -p paper_draft/sections paper_draft/figures paper_draft/tables paper_draft/appendix)
+2. Write main.tex using the EXACT preamble for NEURIPS:
+
+   \documentclass{article}
+   \usepackage[final]{neurips_2025}  % NEURIPS style (neurips_2025.sty is in paper_draft/)
+   \usepackage[hidelinks]{hyperref}  % REQUIRED: clickable links
+   \usepackage{booktabs}  % REQUIRED: professional tables
+   \usepackage{graphicx}
+   \usepackage{amsmath,amssymb}
+
+   % Import command files
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+   % Use this bibliography style:
+   \bibliographystyle{plainnat}
+
+   - Use \input{sections/...} to include each section
+   - Use \bibliography{references} for references
+3. Write each section file with COMPLETE content (no placeholders)
+4. Each section file should include its \section{} command
+5. Write references.bib with all citations in BibTeX format
+6. After writing all files, compile the paper:
+   cd paper_draft && pdflatex -interaction=nonstopmode main.tex && bibtex main && pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode main.tex
+
+This modular structure allows humans to easily:
+- Edit individual sections without navigating a large file
+- Track changes per section
+- Reuse sections across different paper versions
+
+════════════════════════════════════════════════════════════════════════════════
+                          QUALITY REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+- Academic tone throughout
+- All claims must be supported by data from the experiment report
+- Proper citations using \cite{} commands
+- Clear figures and tables with proper captions
+- NO placeholder text - every section must have real content
+- The paper MUST compile without errors
+- If compilation fails, debug and fix the LaTeX errors
+
+════════════════════════════════════════════════════════════════════════════════
+                          LAB WRITING STYLE
+════════════════════════════════════════════════════════════════════════════════
+
+Follow these lab-specific conventions to match our paper style:
+
+1. LANGUAGE STYLE:
+   - Use active voice: "We propose", "We examine", "We focus on"
+   - Be direct and confident: "Our main question is...", "We hypothesize that..."
+   - State things clearly and simply - prefer plain language over jargon
+   - Use bold questions as paragraph organizers: {\bf what is X?}
+   - Include specific quantitative claims: "8.97% over baseline"
+   - Avoid fancy wording: "utilize" → "use", "facilitate" → "help"
+
+2. INTRODUCTION STRUCTURE:
+   - Engaging hook (get to the point quickly)
+   - Problem importance
+   - Gap identification
+   - Your approach with method figure reference
+   - Quantitative preview of results
+   - Contribution bullets (3-4 items, action verbs)
+
+3. CONTRIBUTION LISTS:
+   \begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+       \item We propose...
+       \item We conduct...
+       \item We complement...
+   \end{itemize}
+
+4. MODULAR COMMANDS STRUCTURE:
+   Create paper_draft/commands/ directory with:
+   - math.tex: Math notation macros (copy from templates/paper_writing/commands/)
+   - general.tex: Formatting macros (copy from templates/paper_writing/commands/)
+   - macros.tex: Project-specific term definitions
+
+   In main.tex, include:
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+5. REFERENCE CONVENTIONS:
+   Use reference macros from math.tex:
+   - \figref{fig:name} for "figure 1" (lowercase, in-sentence)
+   - \Figref{fig:name} for "Figure 1" (capitalized, start of sentence)
+   - \secref{sec:name} for "section 2"
+
+6. TEXT FORMATTING:
+   - Use \para{Header text} for bold paragraph headers
+   - Define method/dataset names with \textsc and \xspace:
+     \newcommand{\methodname}{\textsc{MethodName}\xspace}
+
+7. TABLE FORMATTING:
+   - Use booktabs package (no vertical lines)
+   - Use \resizebox{\textwidth}{!}{...} for wide tables
+   - Use @{} to remove padding at table edges
+   - Use \cmidrule(lr){x-y} for sub-headers
+   - Use \textsc{} for dataset/method names in headers
+   - Bold best results with {\bf ...}
+
+8. FIGURE FORMATTING:
+   - Use 0.32\textwidth for 3-column subfigures
+   - Use 0.95\linewidth for full-width figures
+   - Use \input{figures/legend} for shared legends
+   - Write self-contained captions explaining key observations
+
+9. RESULTS PRESENTATION:
+   - Define \increase and \decrease for colored arrows (green up, red down)
+   - Bold best results in tables
+   - Report confidence intervals when available
+
+10. ALGORITHM STYLING:
+    - Use algpseudocode with [noend]
+    - Use \triangleright for comments
+
+11. HYPERLINKS (REQUIRED):
+    - Always use \usepackage[hidelinks]{hyperref} or with colored links
+    - All citations, section refs, figure refs, table refs must be clickable
+    - This is essential for reader navigation
+
+════════════════════════════════════════════════════════════════════════════════
+                          WORKFLOW: REVIEW AND REFLECT
+════════════════════════════════════════════════════════════════════════════════
+
+Before calling finish, you MUST complete these review steps:
+
+1. REVIEW RESOURCES (at the start):
+   - Read templates/skills/paper-writer/SKILL.md for detailed guidance
+   - Study templates/paper_writing/lab_style_guide.md for style conventions
+   - Browse paper_examples/ for formatting and language patterns
+
+2. SELF-REFLECTION (before finishing):
+   After writing all sections, review your work against these criteria:
+
+   LANGUAGE CHECK:
+   - [ ] Is the writing clear and jargon-free?
+   - [ ] Are claims specific with quantitative support?
+   - [ ] Is active voice used throughout?
+
+   FORMATTING CHECK:
+   - [ ] Does main.tex include \input{commands/math}, \input{commands/general}, \input{commands/macros}?
+   - [ ] Is hyperref package included for clickable references?
+   - [ ] Do tables use booktabs (no vertical lines)?
+   - [ ] Are best results bolded in tables?
+   - [ ] Are figures/tables properly captioned?
+
+   STRUCTURE CHECK:
+   - [ ] Does introduction follow: hook → importance → gap → approach → preview → contributions?
+   - [ ] Are contribution bullets specific with action verbs?
+   - [ ] Does the paper compile without errors?
+
+3. FIX ISSUES:
+   - Address any issues found in the self-reflection
+   - Re-compile and verify the PDF looks correct
+
+Only after completing this review should you consider the paper finished.

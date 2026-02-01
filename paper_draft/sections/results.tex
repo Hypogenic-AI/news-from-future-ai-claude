@@ -1,0 +1,113 @@
+\section{Results}
+\label{sec:results}
+
+We present our experimental results comparing the four generation strategies across evaluation metrics.
+
+\subsection{Main Results}
+\label{sec:main_results}
+
+\Tabref{tab:main_results} summarizes the performance of each generation mode.
+
+\begin{table}[t]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}lcccc|c@{}}
+        \toprule
+        \textbf{Mode} & \textbf{Plausibility} & \textbf{Authenticity} & \textbf{Calibration} & \textbf{Overall} & \textbf{Std Dev} \\
+        \midrule
+        \probcond & 4.27 & 4.33 & \textbf{5.00} & \textbf{4.53} & 0.34 \\
+        \scenarioneg & 4.20 & \textbf{4.40} & 4.27 & 4.29 & 0.59 \\
+        \scenariopos & 3.13 & 4.13 & 3.33 & 3.53 & 1.01 \\
+        \zeroshot & 3.07 & 4.00 & 3.13 & 3.40 & 0.93 \\
+        \bottomrule
+    \end{tabular}%
+    }
+    \caption{Generation mode comparison. All scores on 1--5 scale. \probcond achieves the highest overall score (4.53) and perfect calibration (5.0). Best results in \textbf{bold}.}
+    \label{tab:main_results}
+\end{table}
+
+\para{Probability Conditioning Achieves Best Performance.}
+The \probcond approach achieves the highest overall quality score (4.53/5), representing a 33\% improvement over the \zeroshot baseline (3.40/5).
+This improvement is driven primarily by dramatically better calibration: \probcond achieves \textbf{perfect calibration} (5.0/5), compared to only 3.13/5 for \zeroshot.
+This result demonstrates that providing explicit probability information enables LLMs to generate appropriately confident or hedged narratives.
+
+\para{Authenticity is Consistently High.}
+All generation modes achieve high authenticity scores (4.0--4.4), indicating that \gptfour reliably produces professional news-style writing regardless of the prompting strategy.
+This suggests that news-style generation is a baseline LLM capability that does not require specialized prompting.
+
+\para{Scenario-Based Generation Shows Asymmetry.}
+\scenarioneg (4.29/5) substantially outperforms \scenariopos (3.53/5).
+This asymmetry likely reflects our event distribution: since most events have low probability (0--20\%), describing them as \textit{not occurring} produces more plausible narratives than describing them as occurring.
+
+\para{Lower Variance with Probability Conditioning.}
+The \probcond approach shows the lowest standard deviation (0.34) across articles, compared to 0.93--1.01 for other modes.
+Explicit probability information appears to provide consistent guidance that reduces generation variability.
+
+\subsection{Calibration Analysis}
+\label{sec:calibration}
+
+We analyze how well the generated articles' linguistic properties match the input probabilities.
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}lcccc@{}}
+        \toprule
+        \textbf{Prob.\ Range} & \textbf{Articles} & \textbf{Calib.\ Score} & \textbf{Conf.\ Ratio} & \textbf{High/Low Markers} \\
+        \midrule
+        0--20\% & 40 & 3.68 & 0.29 & 1.65 / 2.60 \\
+        60--80\% & 8 & 3.88 & 0.31 & 1.75 / 3.00 \\
+        80--100\% & 12 & \textbf{4.83} & \textbf{0.39} & 1.83 / 1.75 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Calibration analysis by probability range. Higher probability events show better calibration scores and higher confidence ratios. High/Low Markers show average counts of certainty vs.\ hedging words.}
+    \label{tab:calibration}
+\end{table}
+
+\para{Higher Probabilities Yield Better Calibration.}
+\Tabref{tab:calibration} shows that calibration scores increase with probability: 3.68 for low-probability events vs.\ 4.83 for high-probability events.
+This suggests that high-certainty scenarios are easier to calibrate linguistically than uncertain ones.
+
+\para{Confidence Markers Track Probability.}
+The confidence ratio (high-confidence markers / total markers) increases monotonically with probability: 0.29 for low-probability events, 0.31 for medium, and 0.39 for high-probability events.
+Correspondingly, the ratio of high-confidence to low-confidence marker counts shifts from 1.65/2.60 (more hedging) at low probabilities to 1.83/1.75 (more certainty) at high probabilities.
+
+\para{Probability-Confidence Correlation.}
+Across all articles, we observe a positive correlation ($r = 0.21$) between input probability and the confidence ratio of generated articles.
+This provides quantitative evidence that the generation process systematically adjusts linguistic confidence based on probability input.
+
+\subsection{Qualitative Analysis}
+\label{sec:qualitative}
+
+We present examples illustrating the differences between generation modes.
+
+\para{Example 1: Low-Probability Event (6\%).}
+For the event ``US Customs Revenue \$100B-\$200B in 2025'' with 6\% probability:
+
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+    \item \textbf{\probcond headline}: ``U.S.\ Customs Revenue Unlikely to Hit \$100 Billion Mark in 2025, Experts Say''
+    \item \textbf{\zeroshot headline}: ``U.S.\ Customs Revenue Surges Past \$100 Billion in 2025''
+\end{itemize}
+
+The \probcond version appropriately uses hedging (``unlikely'') while the \zeroshot version incorrectly assumes the event occurred.
+
+\para{Example 2: High-Probability Event (95\%).}
+For the event ``Brazil Unemployment Below 6.3\% for Q4 2025'' with 95\% probability:
+
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+    \item \textbf{\probcond}: Uses confident language---``Brazil's unemployment rate \textit{has fallen} below the 6.3\% threshold''
+    \item \textbf{\zeroshot}: Uses uncertain framing---``economists \textit{speculate} that Brazil \textit{may} achieve...''
+\end{itemize}
+
+The \probcond version correctly treats the high-probability event with confidence, while \zeroshot underhedges relative to the probability.
+
+\para{Comparison to Zero-Shot Failure Mode.}
+The \zeroshot approach systematically fails to account for event probability.
+For the event ``Trump deport 1,000,000--1,250,000 people'' (1\% probability), \zeroshot generated: ``Trump Administration Exceeds Deportation Target in 2025, ICE Report Reveals''---treating an extremely unlikely event as if it had already occurred.
+The \probcond version correctly framed it as ``Experts Skeptical as Trump Administration Considers Mass Deportations.''
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/calibration_analysis.png}
+    \caption{Calibration analysis showing how linguistic confidence markers vary with input probability. Higher probability events show higher confidence ratios and fewer hedging phrases.}
+    \label{fig:calibration}
+\end{figure}

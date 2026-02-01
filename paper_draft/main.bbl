@@ -1,0 +1,74 @@
+\begin{thebibliography}{11}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Anonymous(2025)]{controllable2025}
+Anonymous.
+\newblock Controllable stylistic text generation via train-time
+  attribute-regularized diffusion.
+\newblock \emph{arXiv preprint arXiv:2510.06386}, 2025.
+
+\bibitem[Arrow et~al.(2008)Arrow, Forsythe, Gorham, Hahn, Hanson, Ledyard,
+  Levmore, Litan, Milgrom, Nelson, et~al.]{arrow2008promise}
+Kenneth~J Arrow, Robert Forsythe, Michael Gorham, Robert Hahn, Robin Hanson,
+  John~O Ledyard, Saul Levmore, Robert Litan, Paul Milgrom, Forrest~D Nelson,
+  et~al.
+\newblock The promise of prediction markets.
+\newblock \emph{Science}, 320\penalty0 (5878):\penalty0 877--878, 2008.
+
+\bibitem[Guan et~al.(2024)Guan, Chen, Li, and Wu]{guan2024openep}
+Yong Guan, Hao Chen, Shuai Li, and Wei Wu.
+\newblock Openep: Open-ended future event prediction.
+\newblock \emph{arXiv preprint arXiv:2408.06578}, 2024.
+
+\bibitem[Huang et~al.(2023)Huang, Sun, Wang, et~al.]{huang2023fakegpt}
+Yue Huang, Lichao Sun, Haoran Wang, et~al.
+\newblock Fakegpt: Fake news generation, explanation and detection of large
+  language models.
+\newblock \emph{arXiv preprint arXiv:2310.05046}, 2023.
+
+\bibitem[Karger et~al.(2024)Karger, Monrad, Tetlock, and
+  Zou]{karger2024forecastbench}
+Ezra Karger, Joshua Monrad, Philip Tetlock, and James Zou.
+\newblock Forecastbench: A dynamic benchmark of ai forecasting capabilities.
+\newblock \emph{arXiv preprint arXiv:2409.19839}, 2024.
+
+\bibitem[Long et~al.(2024)Long, Chen, Wang, et~al.]{long2024synthetic}
+Jiayi Long, Jiacheng Chen, Chaoqi Wang, et~al.
+\newblock On llms-driven synthetic data generation, curation, and evaluation: A
+  survey.
+\newblock \emph{arXiv preprint arXiv:2406.15126}, 2024.
+
+\bibitem[Schoemaker(1995)]{schoemaker1995scenario}
+Paul~JH Schoemaker.
+\newblock \emph{Scenario Planning: A Tool for Strategic Thinking}, volume~36.
+\newblock 1995.
+
+\bibitem[Schoenegger et~al.(2024)Schoenegger, Park, Karger, and
+  Tetlock]{schoenegger2024ai}
+Philipp Schoenegger, Peter~S Park, Ezra Karger, and Philip Tetlock.
+\newblock Ai-augmented predictions: Llm assistants improve human forecasting
+  accuracy.
+\newblock \emph{arXiv preprint arXiv:2402.07862}, 2024.
+
+\bibitem[Spiegelhalter(2017)]{spiegelhalter2017risk}
+David Spiegelhalter.
+\newblock \emph{Risk and Uncertainty Communication}, volume~4.
+\newblock 2017.
+
+\bibitem[Wang et~al.(2023)Wang, Meng, and Li]{wang2023air}
+Tianqi Wang, Yue Meng, and Lei Li.
+\newblock Air-decoding: Attribute distribution reconstruction for decoding-time
+  controllable text generation.
+\newblock \emph{arXiv preprint arXiv:2310.14892}, 2023.
+
+\bibitem[Wolfers and Zitzewitz(2004)]{wolfers2004prediction}
+Justin Wolfers and Eric Zitzewitz.
+\newblock Prediction markets.
+\newblock \emph{Journal of Economic Perspectives}, 18\penalty0 (2):\penalty0
+  107--126, 2004.
+
+\end{thebibliography}

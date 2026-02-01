@@ -1,0 +1,35 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Prediction markets aggregate distributed knowledge into probability estimates for future events, achieving accuracy comparable to expert forecasters~\citep{arrow2008promise,wolfers2004prediction}.
+Yet raw probabilities---such as ``62\% chance of X''---are cognitively demanding for general audiences to interpret and act upon.
+News articles, by contrast, are a familiar format that conveys information through narrative, making complex situations accessible and engaging.
+This raises a natural question: can we automatically transform prediction market probabilities into plausible news articles about potential futures?
+
+Such a capability would have broad applications.
+Organizations engaged in scenario planning need to envision multiple future outcomes; automatically generated news articles could help stakeholders viscerally understand what different scenarios might look like~\citep{schoemaker1995scenario}.
+Educators could use probability-conditioned news to improve students' probabilistic literacy~\citep{spiegelhalter2017risk}.
+More broadly, translating forecasts into narratives could make the valuable information aggregated by prediction markets accessible to a wider audience.
+
+{\bf What gap exists in current work?}
+While large language models (LLMs) have demonstrated strong capabilities in both forecasting~\citep{karger2024forecastbench,schoenegger2024ai} and realistic text generation~\citep{huang2023fakegpt}, no prior work has combined these capabilities to generate news articles conditioned on prediction market probabilities.
+Existing research on synthetic news generation focuses on misinformation detection~\citep{huang2023fakegpt} or present-day events, not on generating plausible narratives about uncertain futures.
+Meanwhile, work on LLM forecasting evaluates prediction accuracy but not the communication of forecasts through narrative.
+
+{\bf What do we propose?}
+We introduce \ours, a pipeline that generates news articles about future events by conditioning LLM generation on prediction market probabilities (see \figref{fig:method}).
+We fetch real-time prediction data from \polymarket and generate articles using four prompting strategies: zero-shot (baseline), probability-conditioned (explicitly provides probability), scenario-positive (assumes event occurs), and scenario-negative (assumes event does not occur).
+We evaluate the generated articles using \llmjudge with \gptfour and automated linguistic metrics measuring confidence markers and lexical diversity.
+
+{\bf What are our key findings?}
+Our experiments on 15 prediction events across economics, politics, and legal domains reveal that probability conditioning dramatically improves generation quality.
+Probability-conditioned articles achieve an average quality score of 4.53/5, a 33\% improvement over the 3.40/5 baseline.
+Most notably, probability-conditioned generation achieves \textbf{perfect calibration} (5.0/5), demonstrating that LLMs can translate numerical probabilities into appropriately hedged or confident language.
+We observe a positive correlation ($r = 0.21$) between input probability and linguistic confidence markers, confirming systematic calibration at the linguistic level.
+
+In summary, our main contributions are:
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item We propose \ours, the first system for generating news articles conditioned on prediction market probabilities, demonstrating a novel application at the intersection of forecasting and text generation.
+    \item We conduct systematic experiments comparing four prompting strategies, finding that explicit probability conditioning achieves 33\% higher quality scores and perfect calibration compared to baselines.
+    \item We provide evidence that LLMs can effectively translate numerical probabilities into calibrated narrative confidence, with high-probability events generating more confident language and low-probability events generating appropriately hedged text.
+\end{itemize}

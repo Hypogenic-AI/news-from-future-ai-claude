@@ -1,0 +1,167 @@
+[
+  {
+    "id": "537485",
+    "question": "Will the U.S. collect between $100b and $200b in revenue in 2025?",
+    "description": "The U.S. government collected $82.2b in customs duties in FY 2025 (See: https://www.fiscal.treasury.gov/files/reports-statements/financial-report/2024/notes-to-the-financial-statements19.pdf).\n\nThis market will resolve according to the value of customs duties collected in FY 2025 according to the Financial Report of the United States Government published by the Treasury Department for FY 2025 (See: https://www.fiscal.treasury.gov/reports-statements/financial-report/)\n\nIf the Treasury Department does not publish relevant data for FY 2025 by February 28, 2026, 11:59 PM ET, this market will resolve to the lowest bracket. \n\nThe resolution source will be the Treasury Department.",
+    "probability": 0.061,
+    "resolution_date": "2026-02-28T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "517315",
+    "question": "Will Trump deport 1,000,000-1,250,000 people?",
+    "description": "During the 2024 FY ICE removed 271,484 non citizens (see: https://www.ice.gov/doclib/eoy/iceAnnualReportFY2024.pdf).\n\nThis market will resolve to \"Yes\" if U.S. Immigration and Customs Enforcement (ICE) removes between 1,00,000 (inclusive) and 1,250,000 (exclusive) non citizens in the 2025 fiscal year. Otherwise, this market ill resolve to \"No\".\n\nThe resolution source will be the FY 2025 ICE Annual Report. If the FY 2025 ICE Annual Report is not published by February 28, 2026, 11:59 PM ET, another credible resolution source will be used. ",
+    "probability": 0.006,
+    "resolution_date": "2025-12-31T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "517310",
+    "question": "Will Trump deport less than 250,000?",
+    "description": "During the 2024 FY ICE removed 271,484 non citizens (see: https://www.ice.gov/doclib/eoy/iceAnnualReportFY2024.pdf).\n\nThis market will resolve to \"Yes\" if U.S. Immigration and Customs Enforcement (ICE) removes less than 250,000 non citizens in the 2025 fiscal year. Otherwise, this market ill resolve to \"No\".\n\nThe resolution source will be the FY 2025 ICE Annual Report. If the FY 2025 ICE Annual Report is not published by February 28, 2026, 11:59 PM ET, another credible resolution source will be used. ",
+    "probability": 0.0305,
+    "resolution_date": "2025-12-31T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "537488",
+    "question": "Will the U.S. collect between $1t and $2t in revenue in 2025?",
+    "description": "The U.S. government collected $82.2b in customs duties in FY 2025 (See: https://www.fiscal.treasury.gov/files/reports-statements/financial-report/2024/notes-to-the-financial-statements19.pdf).\n\nThis market will resolve according to the value of customs duties collected in FY 2025 according to the Financial Report of the United States Government published by the Treasury Department for FY 2025 (See: https://www.fiscal.treasury.gov/reports-statements/financial-report/)\n\nIf the Treasury Department does not publish relevant data for FY 2025 by February 28, 2026, 11:59 PM ET, this market will resolve to the lowest bracket. \n\nThe resolution source will be the Treasury Department.",
+    "probability": 0.003,
+    "resolution_date": "2026-02-28T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "531202",
+    "question": "BitBoy convicted?",
+    "description": "BitBoy was recently arrested due to a warrant issued for threatening communications he sent to a Judge. You can read more about that here: https://www.binance.com/en/square/post/22059661159362\n\nThis market will resolve to \"Yes\" if BitBoy (Ben Armstrong) is convicted of any charges related to the emails he sent to Judge Kimberly Childs, by March 31, 2026 ET. Otherwise, this market will resolve to \"No\".\n\nConvictions must be for criminal charges.\n\nIf the case is completely dropped for whatever reason, due to a plea agreement without an admission of guilt, a dismissal, or any other situation occurs in which no judgement is rendered or will be rendered by the court, this market will resolve to \"No\".\n\nOnce an individual is convicted it qualifies for an immediate \"Yes\" resolution, regardless of later appeals, etc. This market will resolve based on the first conviction in a qualifying case.\n\nThe primary resolution source will be official court records, however a consensus of credible reporting will also be used.",
+    "probability": 0.61,
+    "resolution_date": "2026-03-31T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "521944",
+    "question": "Will Elon and DOGE cut less than $50b in federal spending in 2025?",
+    "description": "This market will resolve based on federal government current expenditures as reported by the St. Louis Federal Reserve Bank, displayed here (https://fred.stlouisfed.org/series/FGEXPND).\n\nThis market will resolve to the amount federal government current expenditures decrease by between the Q4 2024 report and the Q4 2025 report. \n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nThe difference will be calculated as the Q4 2024 value minus the Q4 2025 value. \n\nThe figures will be based on the initial Q4 2024 and Q4 2025 values as reported by the St. Louis Federal Reserve Bank. Revisions made to these figures will not be considered, only the values reported in the initial reports will be used. \n\nThe figures will be based on the Q4 2024 and Q4 2025 values as reported by the St. Louis Federal Reserve Bank as soon as the data for Q4 2025 becomes available, regardless of whether later revisions are made.\n\nThis market's resolution source is the Federal Government: Current Expenditures chart maintained by the St. Louis Federal Reserve Bank, displayed here (https://fred.stlouisfed.org/series/FGEXPND).",
+    "probability": 0.973,
+    "resolution_date": "2025-12-31T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "517311",
+    "question": "Will Trump deport 250,000-500,000 people?",
+    "description": "During the 2024 FY ICE removed 271,484 non citizens (see: https://www.ice.gov/doclib/eoy/iceAnnualReportFY2024.pdf).\n\nThis market will resolve to \"Yes\" if U.S. Immigration and Customs Enforcement (ICE) removes between 250,000 (inclusive) and 500,000 (exclusive) non citizens in the 2025 fiscal year. Otherwise, this market ill resolve to \"No\".\n\nThe resolution source will be the FY 2025 ICE Annual Report. If the FY 2025 ICE Annual Report is not published by February 28, 2026, 11:59 PM ET, another credible resolution source will be used. ",
+    "probability": 0.8625,
+    "resolution_date": "2025-12-31T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "526939",
+    "question": "Brazil unemployment below 6.3% for Q4 2025?",
+    "description": "This market will resolve to \u201cYes\u201d if Brazil's unemployment rate for Q4 2025 is below 6.3% when it is released. Otherwise, this market will resolve to \u201cNo\u201d.\n\nThis market will resolve according to IBGE's (https://www.ibge.gov.br/en/indicators#desemprego) public release of the Q4 2025 figure unemployment, expected in January 2026. If the publication of this figure is delayed beyond February 28, 2026 ET, this market will resolve according to the last published figure. \n\nBecause this market's resolution source reports quarterly unemployment to one decimal point (e.g. 4.5%), this is the level of precision that will be used when resolving the market.\n",
+    "probability": 0.95,
+    "resolution_date": "2025-12-31T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "537484",
+    "question": "Will the U.S. collect less than $100b in revenue in 2025?",
+    "description": "The U.S. government collected $82.2b in customs duties in FY 2025 (See: https://www.fiscal.treasury.gov/files/reports-statements/financial-report/2024/notes-to-the-financial-statements19.pdf).\n\nThis market will resolve according to the value of customs duties collected in FY 2025 according to the Financial Report of the United States Government published by the Treasury Department for FY 2025 (See: https://www.fiscal.treasury.gov/reports-statements/financial-report/)\n\nIf the Treasury Department does not publish relevant data for FY 2025 by February 28, 2026, 11:59 PM ET, this market will resolve to the lowest bracket. \n\nThe resolution source will be the Treasury Department.",
+    "probability": 0.7515,
+    "resolution_date": "2026-02-28T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "533851",
+    "question": "Negative GDP growth in 2025?",
+    "description": "This market will resolve to 'Yes' if the seasonally adjusted and annualized GDP growth rate for the full year 2025, as derived from the 'Advance Estimate' for Q4 2025, scheduled for release by the U.S. Bureau of Economic Analysis (BEA) on January 30, 2026, reports a growth rate below 0. Otherwise, this market will resolve to 'No'.\n\nThe GDP release will be available at: https://www.bea.gov/data/gdp/gross-domestic-product.\n\nOnly the first available GDP report labeled as the 'Advance Estimate' for Q4 2025, which provides the initial full-year 2025 GDP growth rate, will be used for resolution. Any subsequent revisions or updates to the data will not be considered.",
+    "probability": 0.0035,
+    "resolution_date": "2026-01-30T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "517316",
+    "question": "Will Trump deport 1,250,000-1,500,000 people?",
+    "description": "During the 2024 FY ICE removed 271,484 non citizens (see: https://www.ice.gov/doclib/eoy/iceAnnualReportFY2024.pdf).\n\nThis market will resolve to \"Yes\" if U.S. Immigration and Customs Enforcement (ICE) removes between 1,250,000 (inclusive) and 1,500,000 (exclusive) non citizens in the 2025 fiscal year. Otherwise, this market ill resolve to \"No\".\n\nThe resolution source will be the FY 2025 ICE Annual Report. If the FY 2025 ICE Annual Report is not published by February 28, 2026, 11:59 PM ET, another credible resolution source will be used. ",
+    "probability": 0.005,
+    "resolution_date": "2025-12-31T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "537486",
+    "question": "Will the U.S. collect between $200b and $500b in revenue in 2025?",
+    "description": "The U.S. government collected $82.2b in customs duties in FY 2025 (See: https://www.fiscal.treasury.gov/files/reports-statements/financial-report/2024/notes-to-the-financial-statements19.pdf).\n\nThis market will resolve according to the value of customs duties collected in FY 2025 according to the Financial Report of the United States Government published by the Treasury Department for FY 2025 (See: https://www.fiscal.treasury.gov/reports-statements/financial-report/)\n\nIf the Treasury Department does not publish relevant data for FY 2025 by February 28, 2026, 11:59 PM ET, this market will resolve to the lowest bracket. \n\nThe resolution source will be the Treasury Department.",
+    "probability": 0.18,
+    "resolution_date": "2026-02-28T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "521964",
+    "question": "Will Elon cut the budget by at least 5% in 2025?",
+    "description": "In Q4 2024, government expenditures were $7,106,807,000,000 (see https://fred.stlouisfed.org/series/FGEXPND). \n\nThis market will resolve to \u201cYes\u201d if federal government current expenditures decrease by 5% or more between the Q4 2024 report and the Q4 2025 report. Otherwise, it will resolve to \"No\".\n\nAny 2025 quarterly report of $6,751,467,000,000 or less will qualify for a \u201cYes\u201d resolution.\n\nRevisions made to these figures will not be considered, only the values reported in the initial reports will be used.\n\nThis market's resolution source is the Federal Government: Current Expenditures chart maintained by the St. Louis Federal Reserve Bank, displayed here (https://fred.stlouisfed.org/series/FGEXPND).\n",
+    "probability": 0.0425,
+    "resolution_date": "2026-02-28T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "517314",
+    "question": "Will Trump deport 750,000-1,000,000 people?",
+    "description": "During the 2024 FY ICE removed 271,484 non citizens (see: https://www.ice.gov/doclib/eoy/iceAnnualReportFY2024.pdf).\n\nThis market will resolve to \"Yes\" if U.S. Immigration and Customs Enforcement (ICE) removes between 750,000 (inclusive) and 1,000,000 (exclusive) non citizens in the 2025 fiscal year. Otherwise, this market ill resolve to \"No\".\n\nThe resolution source will be the FY 2025 ICE Annual Report. If the FY 2025 ICE Annual Report is not published by February 28, 2026, 11:59 PM ET, another credible resolution source will be used. ",
+    "probability": 0.01,
+    "resolution_date": "2025-12-31T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  },
+  {
+    "id": "517313",
+    "question": "Will Trump deport 500,000-750,000- people?",
+    "description": "During the 2024 FY ICE removed 271,484 non citizens (see: https://www.ice.gov/doclib/eoy/iceAnnualReportFY2024.pdf).\n\nThis market will resolve to \"Yes\" if U.S. Immigration and Customs Enforcement (ICE) removes between 500,000 (inclusive) and 750,000 (exclusive) non citizens in the 2025 fiscal year. Otherwise, this market ill resolve to \"No\".\n\nThe resolution source will be the FY 2025 ICE Annual Report. If the FY 2025 ICE Annual Report is not published by February 28, 2026, 11:59 PM ET, another credible resolution source will be used. ",
+    "probability": 0.084,
+    "resolution_date": "2025-12-31T12:00:00Z",
+    "category": "general",
+    "outcome_yes": "[",
+    "outcome_no": "\"",
+    "source": "polymarket"
+  }
+]

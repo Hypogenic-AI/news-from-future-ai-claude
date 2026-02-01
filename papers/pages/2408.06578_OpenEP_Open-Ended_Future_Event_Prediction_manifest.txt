@@ -1,0 +1,10 @@
+PDF: papers/2408.06578_OpenEP_Open-Ended_Future_Event_Prediction.pdf
+Total pages: 13
+Pages per chunk: 3
+
+Chunks:
+  2408.06578_OpenEP_Open-Ended_Future_Event_Prediction_chunk_001.pdf: pages 1-3
+  2408.06578_OpenEP_Open-Ended_Future_Event_Prediction_chunk_002.pdf: pages 4-6
+  2408.06578_OpenEP_Open-Ended_Future_Event_Prediction_chunk_003.pdf: pages 7-9
+  2408.06578_OpenEP_Open-Ended_Future_Event_Prediction_chunk_004.pdf: pages 10-12
+  2408.06578_OpenEP_Open-Ended_Future_Event_Prediction_chunk_005.pdf: page 13
